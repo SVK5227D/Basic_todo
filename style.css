@@ -158,11 +158,11 @@ li {
     color: #fff;
 }
 
-#taskValue{
+#taskValue {
     margin: 0;
 }
 
-#completedListLength{
+#completedListLength {
     margin: 0;
 }
 
@@ -260,8 +260,8 @@ li {
 /* Toast msg  */
 .toast {
     position: absolute;
-    left: 35%;
-    top: 22%;
+    left: 45%;
+    top: 24%;
     font-size: larger;
     color: rgb(234, 87, 87);
     font-weight: bolder;
@@ -495,6 +495,7 @@ label #cancel {
 
     .toast2 {
         display: flex;
+        z-index: 999;
         align-items: center;
         position: absolute;
         top: 50px;
@@ -504,6 +505,7 @@ label #cancel {
         padding: 0.5rem 1rem;
         border: 5px solid #029c91;
         opacity: 0%;
+        width: 75%;
         transition: all 0.25s ease-out;
     }
 
@@ -521,7 +523,7 @@ label #cancel {
 
     .toast-active {
         right: 0;
-        /* max-width: 25%; */
+        max-width: 60%;
         opacity: 100%;
     }
 
@@ -534,9 +536,9 @@ label #cancel {
 
     .toast {
         position: absolute;
-        bottom: 50%;
         width: max-content;
-        margin-left: 48%;
+        margin-left: 5%;
+        width: 85%;
         font-size: x-large;
         transform: translateX(-50%);
         padding: 10px 20px;
@@ -604,21 +606,6 @@ label #cancel {
         word-break: break-all;
         width: auto;
         max-width: 80%;
-    }
-
-    .toast2 {
-        width: max-content;
-        max-width: 40%;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 50px;
-        right: -500px;
-        background-color: rgb(0, 231, 46);
-        border-radius: 12px;
-        padding: 0.5rem 1rem;
-        opacity: 0%;
-        transition: all 0.25s ease-out;
     }
 
     .msgTetxt {

@@ -60,6 +60,11 @@ function add() {
     } else {
       msgText = "This value is already entered in the list";
       popupNotification(0, msgText);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
   // Adding or editing the value
