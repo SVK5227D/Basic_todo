@@ -16,11 +16,8 @@ li {
 }
 
 .activeTab {
-    background-color: #17181F;
-    color: #fff;
+    background-color: #3a3a3a;
 }
-
-
 
 .section {
     display: none;
@@ -33,58 +30,6 @@ li {
 
 .section.active {
     display: block;
-}
-
-/* Sidebar view  */
-.sidenav {
-    position: absolute;
-    width: 20%;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background-color: #646468;
-}
-
-.sidenav header {
-    font-size: 25px;
-    text-align: center;
-    color: #fff;
-    height: 8%;
-    background-color: rgb(219, 44, 44);
-    user-select: none;
-}
-
-.sidenav ul li:hover {
-    background-color: purple;
-    color: #fff;
-    text-transform: uppercase;
-    transform: translateX(10%)
-}
-
-.sidenav ul a {
-    display: block;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    line-height: 55px;
-    font-size: 20px;
-    padding-left: 15%;
-    box-sizing: border-box;
-    border-bottom: 1px solid #000000;
-    border-top: 1px solid #000000;
-}
-
-.sidenav ul li {
-    padding-left: 0;
-    list-style: none;
-}
-
-.sidenav ul {
-    padding: 0px;
-}
-
-.sidenav li i {
-    margin-right: 10%;
 }
 
 .wrapper {
@@ -125,13 +70,36 @@ li {
     color: #ffffff;
 }
 
+#btn2 {
+    display: none;
+}
+
+#popup {
+    display: block;
+}
+
+.form-container {
+    text-align: center;
+    display: block;
+    /* margin-left: 5%; */
+}
+
+.formwithbutton {
+    display: flex;
+    margin-left: 25%;
+}
+
 #btn {
     cursor: pointer;
     border-radius: 15px;
     height: 40px;
-    width: 50px;
+    width: 60px;
     font-size: large;
     background-color: #ef7098;
+}
+
+#formTitle {
+    color: #fff;
 }
 
 #btn:hover {
@@ -147,7 +115,6 @@ li {
 
 .listview {
     display: flex;
-    position: relative;
     border: 8px solid #17181f;
     background-color: #68686b;
     padding: 2.5%;
@@ -189,7 +156,7 @@ li {
 }
 
 .view {
-    padding-left: 15%;
+    padding-left: 10%;
     color: #fff;
 }
 
@@ -202,17 +169,20 @@ li {
 }
 
 #deletebutton {
+    margin-top: 2%;
     top: 15%;
     margin-left: 5%;
     left: 85%;
 }
 
 #editbutton {
-    top: 3%;
+    margin-top: 2%;
+    top: 13%;
     left: 70%;
 }
 
 .btnedit {
+    
     cursor: pointer;
     background-color: #ef7098;
     width: 40px;
@@ -227,8 +197,8 @@ li {
 }
 
 .value {
-    display: flex;
-    margin-left: 2%;
+    top: 2%;
+    margin-left: 2.5%;
     width: 65%;
 }
 
@@ -338,34 +308,70 @@ li {
 }
 
 /* popup form */
-
 .form-popup {
-    display: none;
+    display: block;
+}
+
+#popup {
+    display: block;
 }
 
 .addbutton {
     display: none;
 }
 
-/* mobile view sidenav buttons */
+/* Sidebar web view ------------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    background: #20212B;
+    transition: all .5s ease;
+}
 
-.sidenav label {
+.sidebar header {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    line-height: 70px;
+    text-align: center;
+    background: #20212B;
+    user-select: none;
+}
+
+.sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    transition: .4s;
+}
+
+ul li:hover a {
+    padding-left: 50px;
+    cursor: pointer;
+}
+
+.sidebar ul a i {
+    margin-right: 16px;
+}
+
+#check {
     display: none;
 }
 
-.sidenav input {
+label #btnlist,
+label #cancel {
     display: none;
 }
 
-
-@media (max-width: 767px) {
-    .sidenav {
-        position: fixed;
-        left: -25%;
-        height: 100%;
-        background-color: #fff;
-        transition: all 0.5s ease;
-    }
+@media (max-width: 700px) {
 
     .backgroundbody {
         width: 100%;
@@ -381,31 +387,84 @@ li {
         margin-left: 0%;
     }
 
-    .outerinput {
-        display: none;
-    }
-
     .addbutton {
         margin-top: 1%;
         text-align: center;
     }
 
     .form-popup {
-        width: 35%;
-        height: 180px;
-        background-color: #ffffff;
-        display: none;
+        display: block;
         position: fixed;
-        top: 25%;
-        right: 60%;
-        border: 3px solid transparent;
-        z-index: 9;
-        border-radius: 25px;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .form-container {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: 45%;
+        width: 150%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 5px;
     }
 
     .form-container h1 {
-        text-align: center;
-        color: #000000;
+        margin: 0;
+    }
+
+    #input {
+        margin: 0%;
+        width: max-content;
+        height: auto;
+        word-break: break-all;
+    }
+
+    .formwithbutton {
+        display: block;
+        margin-left: 5%;
+    }
+
+    #input {
+        height: 35px;
+    }
+
+    .popupButton {
+        display: flex;
+        margin-top: 0%;
+        padding: 2%;
+    }
+
+    #btn2 {
+        display: block;
+        margin-left: 10%;
+    }
+
+    #btn2 {
+        cursor: pointer;
+        border-radius: 15px;
+        height: 40px;
+        width: 60px;
+        font-size: large;
+        background-color: #ef7098;
+    }
+
+    #btn2:hover {
+        border: 3px solid #ef7098;
+        background-color: transparent;
+        color: #ffffff;
+    }
+
+    #btn2:active {
+        transform: translateY(4px);
+        background-color: #36d72f;
     }
 
     .inputfield {
@@ -449,8 +508,7 @@ li {
     }
 
     .activeTab {
-        background-color: #17181F;
-        color: #fff;
+        background-color: #3a3a3a;
     }
 
     .toast-active {
@@ -482,11 +540,15 @@ li {
 
     .addbutton {
         display: block;
+        position: absolute;
+        margin-top: 138%;
+        justify-content: center;
+        margin-left: 40%;
     }
 
     .addbutton button {
         text-align: center;
-        width: 15%;
+        width: 255%;
         height: 10%;
         border-radius: 25px;
         font-size: 25px;
@@ -498,19 +560,8 @@ li {
                 #EF7098);
     }
 
-    .sidenav label {
-        display: block;
-        color: #fff;
-    }
-    
-    .sidenav input {
-        display: block;
-        color: #fff;
-    }
-
-    .sidenav input {
-        display: block;
-        color: #fff;
+    #popup {
+        display: none;
     }
 
     #btn {
@@ -535,7 +586,6 @@ li {
 
     .listview {
         display: flex;
-        position: relative;
         border: 8px solid #17181f;
         background-color: #68686b;
         padding: 2.5%;
@@ -584,7 +634,7 @@ li {
     .scroll {
         width: 90%;
         height: fit-content;
-        max-height: 200px;
+        max-height: 210px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -614,42 +664,106 @@ li {
         height: 25px;
     }
 
-    /* Side show */
-    #MobileCheck:checked~.mobileSidebarView {
+    #formTitle {
+        color: #000;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -350px;
+        z-index: 999;
+        width: 40%;
+        height: 100%;
+        background: #20212B;
+        transition: all .5s ease;
+    }
+
+    .sidebar header {
+        font-size: 22px;
+        color: white;
+        line-height: 70px;
+        text-align: center;
+        background: #20212B;
+        user-select: none;
+    }
+
+    .sidebar ul a {
+        display: block;
+        /* height: 100%;
+        width: 100%; */
+        line-height: 65px;
+        font-size: 15px;
+        color: white;
+        padding-left: 40px;
+        box-sizing: border-box;
+        border-bottom: 1px solid black;
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        transition: .4s;
+    }
+
+    ul li:hover a {
+        padding-left: 50px;
+        cursor: pointer;
+    }
+
+    .sidebar ul a i {
+        margin-right: 16px;
+    }
+
+    #check {
+        display: none;
+    }
+
+    label #btnlist,
+    label #cancel {
+        display: block;
+        position: absolute;
+        z-index: 999;
+        /* background: #19aff5; */
+        color: #fff;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    label #btnlist {
+        display: block;
+        cursor: pointer;
+        left: 10px;
+        top: 25px;
+        font-size: 35px;
+        color: white;
+        /* padding: 6px 12px; */
+        transition: all .5s;
+    }
+
+    label #cancel {
+        z-index: 1111;
+        left: -195px;
+        top: 17px;
+        font-size: 30px;
+        color: #ffffff;
+        padding: 2px 4px;
+        transition: all .5s ease;
+    }
+
+    #check:checked~.sidebar {
         left: 0;
     }
 
-    #MobileCheck:checked~label #sidebarShow {
-        left: 15%;
+    #check:checked~label #btnlist {
+        left: 50px;
         opacity: 0;
         pointer-events: none;
     }
 
-    #MobileCheck:checked~label #sidebarCancel {
-        left: 150px;
-    }
-
-    label #sidebarShow,
-    label #sidebarCancel {
-        position: absolute;
-        cursor: pointer;
-    }
-
-    label #sidebarShow {
-        left: 5%;
-        top: 5%;
-        font-size: 25px;
-        color: #ffffff;
-        transition: all 0.5s;
-    }
-
-    label #sidebarCancel {
-        z-index: 15;
-        left: -550px;
+    #check:checked~label #cancel {
         top: 0.5%;
+        left: 135px;
         font-size: 25px;
-        color: #ff0000;
-        padding: 4px 9px;
-        transition: all 0.5s;
     }
+
+    #check:checked~section {
+        margin-left: 250px;
+    }
+
 }

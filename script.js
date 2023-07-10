@@ -1,3 +1,42 @@
+//   Sidenav Controller
+function showSection(sectionId) {
+  var sidenav = document.getElementById("sidebar");
+  var sideList1 = document.getElementById("sideList1");
+  var sideList2 = document.getElementById("sideList2");
+  var sideList3 = document.getElementById("sideList3");
+  var sideList4 = document.getElementById("sideList4");
+  sidenav.style.display = "block";
+  // Hide all sections
+  var sections = document.getElementsByTagName("include");
+  console.log("length section");
+  console.log(sections.length);
+  for (var i = 0; i < sections.length; i++) {
+    sidenav.style.display = "block";
+    sections[i].style.display = "none";
+    sideList1.classList.remove("activeTab");
+    sideList2.classList.remove("activeTab");
+    sideList3.classList.remove("activeTab");
+    sideList4.classList.remove("activeTab");
+  }
+
+  if (sectionId == "section1") {
+    sideList1.classList.add("activeTab");
+  } else if (sectionId == "section2") {
+    sideList2.classList.add("activeTab");
+  } else if (sectionId == "section3") {
+    sideList3.classList.add("activeTab");
+  } else {
+    sideList4.classList.add("activeTab");
+  }
+
+  // Show the selected section
+  var section = document.getElementById(sectionId);
+
+  if (section) {
+    section.style.display = "block";
+  }
+}
+
 // Select form
 var form = document.getElementById("form");
 // Getting input field
@@ -47,6 +86,8 @@ function add() {
       document.getElementById("btn").innerHTML = "Add";
       msgText = "There are no changes in your todo";
       popupNotification(1, msgText);
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       msgText = "This value is already entered in the list";
       popupNotification(0, msgText);
@@ -64,6 +105,8 @@ function add() {
       input.value = "";
       msgText = "Changes have been saved in the list";
       popupNotification(1, msgText);
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       List.push({
         value: inputValue,
@@ -73,6 +116,7 @@ function add() {
       listLength += 1;
       msgText = "Your new todo has been added";
       popupNotification(1, msgText);
+      document.getElementById("popup").style.display = "none";
     }
   }
 }
@@ -229,6 +273,8 @@ function checkList(wl) {
 
 // Function to edit a todo
 function editList(wl) {
+  document.getElementById("formTitle").innerHTML = "Edit todo";
+  document.getElementById("popup").style.display = "block";
   document.getElementById("btn").innerHTML = "Save";
   input.value = List[wl].value;
   EditList = wl;
@@ -283,45 +329,6 @@ function formClose() {
   document.getElementById("id01").style.display = "none";
 }
 
-//   Sidenav Controller
-function showSection(sectionId) {
-  console.log(sectionId);
-  var sidenav = document.getElementById("sidenav");
-  var sideList1 = document.getElementById("sideList1");
-  var sideList2 = document.getElementById("sideList2");
-  var sideList3 = document.getElementById("sideList3");
-  var sideList4 = document.getElementById("sideList4");
-  sidenav.style.display = "block";
-  // Hide all sections
-  var sections = document.getElementsByTagName("include");
-  console.log("length section");
-  console.log(sections.length);
-  for (var i = 0; i < sections.length; i++) {
-    sidenav.style.display = "block";
-    sections[i].style.display = "none";
-    sideList1.classList.remove("activeTab");
-    sideList2.classList.remove("activeTab");
-    sideList3.classList.remove("activeTab");
-    sideList4.classList.remove("activeTab");
-  }
-
-  if (sectionId == "section1") {
-    sideList1.classList.add("activeTab");
-  } else if (sectionId == "section2") {
-    sideList2.classList.add("activeTab");
-  } else if (sectionId == "section3") {
-    sideList3.classList.add("activeTab");
-  } else {
-    sideList4.classList.add("activeTab");
-  }
-
-  // Show the selected section
-  var section = document.getElementById(sectionId);
-
-  if (section) {
-    section.style.display = "block";
-  }
-}
 function openForm() {
   document.getElementById("popup").style.display = "block";
 }
