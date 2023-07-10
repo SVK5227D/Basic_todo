@@ -38,11 +38,6 @@ li {
 }
 
 /* body */
-
-.outerinput {
-    text-align: center;
-}
-
 .outerinput2 h3 {
     text-align: center;
     font-size: large;
@@ -99,7 +94,9 @@ li {
 }
 
 #formTitle {
+    margin: 0%;
     color: #fff;
+    font-size: 25px;
 }
 
 #btn:hover {
@@ -117,7 +114,8 @@ li {
     display: flex;
     border: 8px solid #17181f;
     background-color: #68686b;
-    padding: 2.5%;
+    padding: 1.5%;
+    word-break: break-all;
     border-radius: 25px;
 }
 
@@ -148,11 +146,11 @@ li {
 }
 
 .head {
+    padding-top: 2%;
     margin-top: 0%;
     color: white;
     margin-left: 45%;
-    margin-bottom: 4%;
-    font-size: x-large;
+    font-size: 30px;
 }
 
 .view {
@@ -160,7 +158,16 @@ li {
     color: #fff;
 }
 
+#taskValue{
+    margin: 0;
+}
+
+#completedListLength{
+    margin: 0;
+}
+
 .scroll {
+    top: 0;
     width: 90%;
     height: fit-content;
     max-height: 200px;
@@ -182,7 +189,7 @@ li {
 }
 
 .btnedit {
-    
+
     cursor: pointer;
     background-color: #ef7098;
     width: 40px;
@@ -351,6 +358,7 @@ li {
     border-bottom: 1px solid black;
     border-top: 1px solid rgba(255, 255, 255, .1);
     transition: .4s;
+    text-decoration: none;
 }
 
 ul li:hover a {
@@ -541,7 +549,8 @@ label #cancel {
     .addbutton {
         display: block;
         position: absolute;
-        margin-top: 138%;
+        z-index: 999;
+        bottom: 1%;
         justify-content: center;
         margin-left: 40%;
     }
@@ -586,10 +595,15 @@ label #cancel {
 
     .listview {
         display: flex;
+        position: relative;
         border: 8px solid #17181f;
         background-color: #68686b;
+        height: auto;
         padding: 2.5%;
         border-radius: 25px;
+        word-break: break-all;
+        width: auto;
+        max-width: 80%;
     }
 
     .toast2 {
@@ -627,7 +641,7 @@ label #cancel {
     }
 
     .view {
-        padding-left: 15%;
+        padding-left: 10%;
         color: #fff;
     }
 

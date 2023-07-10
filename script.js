@@ -1,42 +1,3 @@
-//   Sidenav Controller
-function showSection(sectionId) {
-  var sidenav = document.getElementById("sidebar");
-  var sideList1 = document.getElementById("sideList1");
-  var sideList2 = document.getElementById("sideList2");
-  var sideList3 = document.getElementById("sideList3");
-  var sideList4 = document.getElementById("sideList4");
-  sidenav.style.display = "block";
-  // Hide all sections
-  var sections = document.getElementsByTagName("include");
-  console.log("length section");
-  console.log(sections.length);
-  for (var i = 0; i < sections.length; i++) {
-    sidenav.style.display = "block";
-    sections[i].style.display = "none";
-    sideList1.classList.remove("activeTab");
-    sideList2.classList.remove("activeTab");
-    sideList3.classList.remove("activeTab");
-    sideList4.classList.remove("activeTab");
-  }
-
-  if (sectionId == "section1") {
-    sideList1.classList.add("activeTab");
-  } else if (sectionId == "section2") {
-    sideList2.classList.add("activeTab");
-  } else if (sectionId == "section3") {
-    sideList3.classList.add("activeTab");
-  } else {
-    sideList4.classList.add("activeTab");
-  }
-
-  // Show the selected section
-  var section = document.getElementById(sectionId);
-
-  if (section) {
-    section.style.display = "block";
-  }
-}
-
 // Select form
 var form = document.getElementById("form");
 // Getting input field
@@ -54,6 +15,10 @@ let completedListLength = CompletedList.length;
 // Variable to store the index of an item being edited
 let EditList = -1;
 let msgText;
+
+// Check the width of the window
+var windowWidth = window.innerWidth;
+
 //Calling function to getvalue in localstorage
 addingTodo();
 listCompleted();
@@ -86,7 +51,11 @@ function add() {
       document.getElementById("btn").innerHTML = "Add";
       msgText = "There are no changes in your todo";
       popupNotification(1, msgText);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
       document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       msgText = "This value is already entered in the list";
@@ -105,7 +74,11 @@ function add() {
       input.value = "";
       msgText = "Changes have been saved in the list";
       popupNotification(1, msgText);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
       document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       List.push({
@@ -116,13 +89,18 @@ function add() {
       listLength += 1;
       msgText = "Your new todo has been added";
       popupNotification(1, msgText);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
 }
 
 // Function to display the list of todos
 function addingTodo(id) {
+  console.log("Rendering Todo list");
   if (List.length == 0) {
     forward.innerHTML =
       '<center class="valueMessage">Your Todo List is empty</center>';
@@ -133,6 +111,9 @@ function addingTodo(id) {
   forward.innerHTML = "";
 
   List.forEach((todo, index) => {
+    console.log("Check value based on sectionId");
+    // debugger;
+    console.log(todo);
     if (todo.checked == true) {
       CompletedList.push(todo);
       List = List.filter((h, index) => id != index);
@@ -150,7 +131,6 @@ function addingTodo(id) {
         return;
       }
     }
-
     forward.innerHTML += `
       <div class="listview" id=${index}>
         <i 
@@ -164,7 +144,7 @@ function addingTodo(id) {
         <button id="deletebutton" class="btndelete bi bi-trash" data-action="delete"></button>   
       </div>`;
   });
-
+  console.log("----------------------------------------");
   if (listLength > 0) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
   }
@@ -218,12 +198,8 @@ function listCompleted(id) {
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength;
   }
-
   addingTodo();
 }
-
-// Event listener for form submission
-
 // Event listener for check, edit, and delete buttons in the list
 forward.addEventListener("click", (event) => {
   var target = event.target;
@@ -260,6 +236,7 @@ function completedMove(wl) {
   msgText = "Your todo has been moved to task inprocess";
   popupNotification(1, msgText);
 }
+
 function checkList(wl) {
   List = List.map((todo, index) => ({
     ...todo,
@@ -336,3 +313,44 @@ function openForm() {
 function closeForm() {
   document.getElementById("popup").style.display = "none";
 }
+
+//   Sidenav Controller
+function showSection(sectionId) {
+  var sidenav = document.getElementById("sidebar");
+  var sideList1 = document.getElementById("sideList1");
+  var sideList2 = document.getElementById("sideList2");
+  var sideList3 = document.getElementById("sideList3");
+  var sideList4 = document.getElementById("sideList4");
+  sidenav.style.display = "block";
+  // Hide all sections
+  var sections = document.getElementsByTagName("include");
+  for (var i = 0; i < sections.length; i++) {
+    sidenav.style.display = "block";
+    sections[i].style.display = "none";
+    sideList1.classList.remove("activeTab");
+    sideList2.classList.remove("activeTab");
+    sideList3.classList.remove("activeTab");
+    sideList4.classList.remove("activeTab");
+  }
+  console.log("section id check");
+  console.log(sectionId);
+  if (sectionId == "section1") {
+    sideList1.classList.add("activeTab");
+  } else if (sectionId == "section2") {
+    sideList2.classList.add("activeTab");
+  } else if (sectionId == "section3") {
+    sideList3.classList.add("activeTab");
+  } else {
+    sideList4.classList.add("activeTab");
+  }
+  // Show the selected section
+  var section = document.getElementById(sectionId);
+  if (section) {
+    section.style.display = "block";
+  }
+  debugger;
+  addingTodo();
+  listCompleted();
+}
+
+console.log("Window Width:", windowWidth);

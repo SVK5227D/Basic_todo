@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>Todo</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <input type="checkbox" id="check">
+    <label for="check">
+        <i class="bi bi-list" id="btnlist"></i>
+        <i class="bi bi-x-circle" id="cancel"></i>
+    </label>
+    <div class="sidebar" id="sidebar">
+        <header>Collections</header>
+        <ul>
+            <li id="sideList1" class="activeTab">
+                <a href="../index.html" onclick="showSection('section1')">
+                    <i class="bi bi-house "></i>
+                    Home
+                </a>
+            </li>
+            <li id="sideList2">
+                <a href="./school.html" onclick="showSection('section2')">
+                    <i class="bi bi-book"></i>
+                    School
+                </a>
+            </li>
+            <li id="sideList3">
+                <a href="./personal.html" onclick="showSection('section3')">
+                    <i class="bi bi-person"></i>
+                    Personal
+                </a>
+            </li>
+            <li id="sideList4">
+                <a href="./design.html" onclick="showSection('section4')">
+                    <i class="bi bi-pencil"></i>
+                    Design
+                </a>
+            </li>
+        </ul>
+    </div>
+    <include id="section4" class="section active">
+        <div class="backgroundbody">
+            <h3 class="head">Design</h3>
+            <div class="outerinput">
+                <div>
+                    <div class="addbutton">
+                        <button onclick="openForm()">+</button>
+                    </div>
+                    <div class="form-popup" id="popup">
+                        <div id="form">
+                            <form class="form-container">
+                                <h1 id="formTitle"> Add todo</h1>
+                                <div class="formwithbutton">
+                                    <input type="text" id="input" placeholder="Add new Todo..." class="inputfield"
+                                        autocomplete="off">
+                                    <div class="popupButton">
+                                        <button type="submit" id="btn">Add</button>
+                                        <button type="button" id="btn2" onclick="closeForm()">Close</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="toast2" id="toast2">
+                        <p class="msgTetxt" id="msgTetxt"></p>
+                        <button id="toastCloseBtn" class="toastCloseBtn">&#10005;</button>
+                    </div>
+                </div>
+            </div>
+            <div id="id01" class="modal" style="display: none;">
+                <form class="modal-content">
+                    <div class="container">
+                        <p>Are you sure you want to delete your todo?</p>
+                        <div class="clearfix">
+                            <button type="button" onclick="formClose()" class="cancelbtn">
+                                Cancel
+                            </button>
+                            <button id="deleteValue" class="deletebtn">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="outerinput2">
+                <h3>Todo's List</h3>
+                <!-- To view the task after add,delete,edit  -->
+                <div style="margin-top: 3%">
+                    <p id="taskValue"></p>
+                    <div class="scroll">
+                        <div id="list" class="view"></div>
+                    </div>
+                </div>
+                <!-- To view the task after add,delete,edit  -->
+                <div style="margin-top: 3%">
+                    <p id="completedListLength"></p>
+                    <div class="scroll">
+                        <div id="completedList" class="view"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="toast2" id="toast2">
+                <p class="msgTetxt" id="msgTetxt"></p>
+                <button id="toastCloseBtn" class="toastCloseBtn">&#10005;</button>
+            </div>
+        </div>
+    </include>
+    <script src="../js/design.js"></script>
+</body>
+
+</html>
