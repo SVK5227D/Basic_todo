@@ -11,6 +11,10 @@ let listLength3 = designList.length;
 let designCompletedList =
   JSON.parse(localStorage.getItem("designCompletedList")) || [];
 let completedListLength3 = designCompletedList.length;
+
+// Check the width of the window
+var windowWidth = window.innerWidth;
+
 //array to store
 let editlisttochange = -1;
 // Passing empty value for toast message
@@ -51,12 +55,23 @@ function add() {
   else if (isDuplicate) {
     if (editlisttochange >= 0) {
       input.value = "";
-      document.getElementById("btn").innerHTML = "+";
+      document.getElementById("btn").innerHTML = "Add";
       msgText3 = "There is no changes in your todo";
       popupNotification(1, msgText3);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
+      
     } else {
       msgText3 = "This value already entered in list";
       popupNotification(0, msgText3);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
   //Adding and editing
@@ -67,12 +82,17 @@ function add() {
         value: index == editlisttochange ? inputValue : q.value,
       }));
       editlisttochange = -1;
-      // Changing the button "+" after saving the value
-      document.getElementById("btn").innerHTML = "+";
+      // Changing the button "Add" after saving the value
+      document.getElementById("btn").innerHTML = "Add";
       // Clearing the inputfield after edting the value
       input.value = "";
       msgText3 = "Changes has been saved in list";
       popupNotification(1, msgText3);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     } else {
       // To store the value
       designList.push({
@@ -84,6 +104,11 @@ function add() {
       listLength3 += 1;
       msgText3 = "Your new todo has been added";
       popupNotification(1, msgText3);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
 }
@@ -181,9 +206,8 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${
-          todo.checked ? "checked" : " "
-        } value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? "checked" : " "
+      } value" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
@@ -247,28 +271,30 @@ function checkList(wl) {
 
 // ------------------------------            editlisttochange function          --------------------------------------------
 function editlist3(wl) {
-  document.getElementById("btn").innerHTML = '<i class="bi bi-save"></i>';
+  document.getElementById("formTitle").innerHTML = "Edit todo";
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("btn").innerHTML = "Save";
   input.value = designList[wl].value;
   editlisttochange = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
 function deleteList(wl) {
-  var con = confirm("Are you sure you want to delete this todo?");
-  //Checking condition is true or false
-  if (con) {
+  document.getElementById("id01").style.display = "block";
+  var removeValue = document.getElementById("deleteValue");
+  removeValue.addEventListener("click", function (event) {
     designList = designList.filter((h, index) => wl != index);
-    //Calling Function changes in list
     listLength3 -= 1;
     addingTodo();
     if (listLength3 == 0) {
       designList = [];
       localStorage.setItem("designList", JSON.stringify(designList));
     }
-    msgText3 = "Todo has been deleted";
-    popupNotification(1, msgText3);
     localStorage.setItem("designList", JSON.stringify(designList));
-  }
+    msgText2 = "Todo has been deleted";
+    popupNotification(1, msgText3);
+    document.getElementById("id01").style.display = "none";
+  });
 }
 
 //----------------------     Popup message              ----------------------------
@@ -282,12 +308,14 @@ function popupNotification(msg, msgText3) {
       toast.remove();
     }, 1300);
   } else {
-    toast.classList.add("toast2");
-    toast.textContent = msgText3;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.remove();
-    }, 1300);
+    let toast2 = document.getElementById("toast2");
+    document.getElementById("msgTetxt").innerHTML = msgText3;
+    toast2.classList.add("toast-active");
+    document
+      .getElementById("toastCloseBtn")
+      .addEventListener("click", function () {
+        toast2.classList.remove("toast-active");
+      });
   }
 }
 // Function to close the confirmation dialog

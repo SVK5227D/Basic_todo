@@ -11,6 +11,10 @@ let listLength4 = schoolList.length;
 let schoolCompletedList =
   JSON.parse(localStorage.getItem("schoolCompletedList")) || [];
 let completedlistLength4 = schoolCompletedList.length;
+
+// Check the width of the window
+var windowWidth = window.innerWidth;
+
 //array to store
 let editList4 = -1;
 // Passing empty value for toast message
@@ -46,7 +50,11 @@ function add() {
   if (inputValue.length == 0) {
     msgText4 = "Your entered empty text!!!!!!!!";
     popupNotification(0, msgText4);
-    document.getElementById("popup").style.display = "none";
+    if (windowWidth > 700) {
+      document.getElementById("popup").style.display = "block";
+    } else {
+      document.getElementById("popup").style.display = "none";
+    }
   }
   //Checking the duplicate value before storig list
   else if (isDuplicate) {
@@ -55,7 +63,11 @@ function add() {
       document.getElementById("btn").innerHTML = "Add";
       msgText4 = "There is no changes in your todo";
       popupNotification(1, msgText4);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
       document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       msgText4 = "This value already entered in list";
@@ -70,13 +82,17 @@ function add() {
         value: index == editList4 ? inputValue : q.value,
       }));
       editList4 = -1;
-      // Changing the button "+" after saving the value
-      document.getElementById("btn").innerHTML = "+";
+      // Changing the button "Add" after saving the value
+      document.getElementById("btn").innerHTML = "Add";
       // Clearing the inputfield after edting the value
       input.value = "";
       msgText4 = "Changes has been saved in list";
       popupNotification(1, msgText4);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
       document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       // To store the value
@@ -89,7 +105,11 @@ function add() {
       listLength4 += 1;
       msgText4 = "Your new todo has been added";
       popupNotification(1, msgText4);
-      document.getElementById("popup").style.display = "none";
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
 }
@@ -188,9 +208,8 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${
-          todo.checked ? "checked" : " "
-        } value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? "checked" : " "
+      } value" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list

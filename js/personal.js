@@ -11,6 +11,10 @@ let listLength2 = personalList.length;
 let personalCompletedList =
   JSON.parse(localStorage.getItem("personalCompletedList")) || [];
 let completedListLength2 = personalCompletedList.length;
+
+// Check the width of the window
+var windowWidth = window.innerWidth;
+
 //array to store
 let EditList2 = -1;
 // Passing empty value for toast message
@@ -54,9 +58,19 @@ function add() {
       document.getElementById("btn").innerHTML = "+";
       msgText2 = "There is no changes in your todo";
       popupNotification(1, msgText2);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     } else {
       msgText2 = "This value already entered in list";
       popupNotification(0, msgText2);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
   //Adding and editing
@@ -73,6 +87,11 @@ function add() {
       input.value = "";
       msgText2 = "Changes has been saved in list";
       popupNotification(1, msgText2);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     } else {
       // To store the value
       personalList.push({
@@ -84,6 +103,11 @@ function add() {
       listLength2 += 1;
       msgText2 = "Your new todo has been added";
       popupNotification(1, msgText2);
+      if (windowWidth > 700) {
+        document.getElementById("popup").style.display = "block";
+      } else {
+        document.getElementById("popup").style.display = "none";
+      }
     }
   }
 }
@@ -182,9 +206,8 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${
-          todo.checked ? "checked" : " "
-        } value" data-action="check">${todo.value}</p>
+        <p class="${todo.checked ? "checked" : " "
+      } value" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
@@ -231,8 +254,8 @@ function completedMove(wl) {
   addingTodo();
   listCompleted(wl);
   listCompleted();
-  msgText3 = "Your todo has been moved to task inprocess";
-  popupNotification(1, msgText3);
+  msgText2 = "Your todo has been moved to task inprocess";
+  popupNotification(1, msgText2);
 }
 
 // -------------------------------      Completed Function                                 ------------------------------------------
@@ -244,34 +267,38 @@ function checkList(wl) {
   }));
   addingTodo(wl);
   listCompleted();
-  msgText3 = "Your todo has been completed";
-  popupNotification(1, msgText3);
+  msgText2 = "Your todo has been completed";
+  popupNotification(1, msgText2);
 }
 
 // ------------------------------            Editlist2 function          --------------------------------------------
 function editList2(wl) {
-  document.getElementById("btn").innerHTML = '<i class="bi bi-save"></i>';
+  document.getElementById("formTitle").innerHTML = "Edit todo";
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("btn").innerHTML = "Save";
   input.value = personalList[wl].value;
   EditList2 = wl;
 }
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
 function deleteList(wl) {
-  var con = confirm("Are you sure you want to delete this todo?");
-  //Checking condition is true or false
-  if (con) {
+  // debugger
+  document.getElementById("id01").style.display = "block";
+  var removeValue = document.getElementById("deleteValue");
+  removeValue.addEventListener("click", function (event) {
     personalList = personalList.filter((h, index) => wl != index);
-    //Calling Function changes in list
-    listLength2 -= 1;
+    listLength -= 1;
     addingTodo();
-    if (listLength2 == 0) {
+    if (listLength == 0) {
       personalList = [];
       localStorage.setItem("personalList", JSON.stringify(personalList));
     }
+
+    localStorage.setItem("personalList", JSON.stringify(personalList));
     msgText2 = "Todo has been deleted";
     popupNotification(1, msgText2);
-    localStorage.setItem("personalList", JSON.stringify(personalList));
-  }
+    document.getElementById("id01").style.display = "none";
+  });
 }
 
 //----------------------     Popup message ----------------------------
@@ -285,12 +312,14 @@ function popupNotification(msg, msgText2) {
       toast.remove();
     }, 1300);
   } else {
-    toast.classList.add("toast2");
-    toast.textContent = msgText2;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-      toast.remove();
-    }, 1300);
+    let toast2 = document.getElementById("toast2");
+    document.getElementById("msgTetxt").innerHTML = msgText2;
+    toast2.classList.add("toast-active");
+    document
+      .getElementById("toastCloseBtn")
+      .addEventListener("click", function () {
+        toast2.classList.remove("toast-active");
+      });
   }
 }
 // Function to close the confirmation dialog
@@ -304,4 +333,43 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("popup").style.display = "none";
+}
+
+//   Sidenav Controller
+function showSection(sectionId) {
+  var sidenav = document.getElementById("sidebar");
+  var sideList1 = document.getElementById("sideList1");
+  var sideList2 = document.getElementById("sideList2");
+  var sideList3 = document.getElementById("sideList3");
+  var sideList4 = document.getElementById("sideList4");
+  sidenav.style.display = "block";
+  // Hide all sections
+  var sections = document.getElementsByTagName("include");
+  for (var i = 0; i < sections.length; i++) {
+    sidenav.style.display = "block";
+    sections[i].style.display = "none";
+    sideList1.classList.remove("activeTab");
+    sideList2.classList.remove("activeTab");
+    sideList3.classList.remove("activeTab");
+    sideList4.classList.remove("activeTab");
+  }
+  console.log("section id check");
+  console.log(sectionId);
+  if (sectionId == "section1") {
+    sideList1.classList.add("activeTab");
+  } else if (sectionId == "section2") {
+    sideList2.classList.add("activeTab");
+  } else if (sectionId == "section3") {
+    sideList3.classList.add("activeTab");
+  } else {
+    sideList4.classList.add("activeTab");
+  }
+  // Show the selected section
+  var section = document.getElementById(sectionId);
+  if (section) {
+    section.style.display = "block";
+  }
+  debugger;
+  addingTodo();
+  listCompleted();
 }
