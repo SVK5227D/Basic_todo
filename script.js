@@ -105,7 +105,6 @@ function add() {
 
 // Function to display the list of todos
 function addingTodo(id) {
-  console.log("Rendering Todo list");
   if (List.length == 0) {
     forward.innerHTML =
       '<center class="valueMessage">Your Todo List is empty</center>';
@@ -116,9 +115,6 @@ function addingTodo(id) {
   forward.innerHTML = "";
 
   List.forEach((todo, index) => {
-    console.log("Check value based on sectionId");
-    // debugger;
-    console.log(todo);
     if (todo.checked == true) {
       CompletedList.push(todo);
       List = List.filter((h, index) => id != index);
@@ -149,7 +145,6 @@ function addingTodo(id) {
         <button id="deletebutton" class="btndelete bi bi-trash" data-action="delete"></button>   
       </div>`;
   });
-  console.log("----------------------------------------");
   if (listLength > 0) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
   }
@@ -291,9 +286,13 @@ function popupNotification(msg, msgText) {
     toast.classList.add("toast");
     toast.textContent = msgText;
     document.body.appendChild(toast);
-    setTimeout(() => {
+    
+    setTimeout(() => {    
+      document.getElementById("input").classList.add("invalid");  
       toast.remove();
+      document.getElementById("input").classList.remove("invalid");
     }, 2300);
+    
   } else {
     let toast2 = document.getElementById("toast2");
     document.getElementById("msgTetxt").innerHTML = msgText;

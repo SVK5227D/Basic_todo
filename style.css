@@ -87,6 +87,7 @@ li {
 
 #formTitle {
     text-align: center;
+    margin-top: 0;
     margin-right: 2%;
     color: #fff;
     font-size: 25px;
@@ -139,12 +140,17 @@ li {
     cursor: pointer;
 }
 
+.inputfield.invalid {
+    border-color: red;
+}
+
 .head {
-    padding-top: 2%;
+    padding-top: 1.5%;
     margin-top: 0%;
     color: white;
-    margin-left: 45%;
+    margin-left: 43.5%;
     font-size: 30px;
+    margin-bottom: 1%;
 }
 
 .view {
@@ -200,15 +206,18 @@ li {
 .value {
     top: 2%;
     margin-left: 2.5%;
-    width: 65%;
+    width: 70%;
 }
 
 .checked {
     text-decoration: line-through;
+    text-decoration-color: #000;
+    color: #fff;
 }
 
+
 .check {
-    margin-top: 3.2%;
+    margin-top: 3.5%;
     justify-content: left;
     color: #ffff00;
 }
@@ -259,6 +268,10 @@ li {
     color: rgb(234, 87, 87);
     font-weight: bolder;
     border-radius: 5px;
+}
+
+.invalid {
+    border-color: red;
 }
 
 .icon {
@@ -385,11 +398,6 @@ label #cancel {
         background-color: #17181F;
         height: 100%;
         margin-left: 0%;
-    }
-
-    .addbutton {
-        margin-top: 1%;
-        text-align: center;
     }
 
     .form-popup {
@@ -555,8 +563,8 @@ label #cancel {
     .addbutton {
         display: block;
         position: absolute;
-        z-index: 999;
-        bottom: 1%;
+        z-index: 99;
+        bottom: 2%;
         justify-content: center;
         margin-left: 40%;
     }
@@ -635,7 +643,7 @@ label #cancel {
     .head {
         margin-top: 0%;
         color: white;
-        margin-left: 45%;
+        margin-left: 40%;
         margin-bottom: 4%;
         font-size: x-large;
     }
@@ -713,6 +721,10 @@ label #cancel {
         transition: .4s;
     }
 
+    .head {
+        padding-top: 8%;
+    }
+
     ul li:hover a {
         padding-left: 50px;
         cursor: pointer;
@@ -768,7 +780,7 @@ label #cancel {
 
     #check:checked~label #cancel {
         top: 0.5%;
-        left: 135px;
+        left: 33%;
         font-size: 25px;
     }
 
@@ -781,26 +793,6 @@ label #cancel {
     }
 
 }
-
-/* @media (min-height:800px) {
-    .scroll{
-        width: 90%;
-        height: fit-content;
-        max-height: 305px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-}
-
-@media (min-height:800px 900px) {
-    .scroll{
-        width: 90%;
-        height: fit-content;
-        max-height: 355px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-} */
 
 @media (min-height: 800px) and (max-height: 900px) {
     .scroll {
@@ -820,5 +812,21 @@ label #cancel {
         max-height: 315px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+}
+
+@media (max-width:700px) {
+    .check {
+        margin-top: 3.5%;
+        justify-content: left;
+        color: #ffff00;
+    }
+}
+
+@media (max-width:550px) {
+    #check:checked~label #cancel {
+        top: 0.5%;
+        left: 32%;
+        font-size: 25px;
     }
 }
