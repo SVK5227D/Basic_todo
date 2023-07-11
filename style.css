@@ -228,11 +228,12 @@ li {
     padding: 2%;
     background-color: #ffffff;
     position: fixed;
-    top: 30%;
-    right: 35%;
+    top: 50%;
+    /* right: 35%; */
     border: 3px solid transparent;
     z-index: 9;
     border-radius: 25px;
+    left: 10%;
 }
 
 .container p {
@@ -835,6 +836,8 @@ label #cancel {
         overflow-y: auto;
         overflow-x: hidden;
     }
+
+    
 }
 
 @media (max-width:400px) {
