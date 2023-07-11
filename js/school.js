@@ -208,8 +208,9 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? "checked" : " "
-      } value" data-action="check">${todo.value}</p>
+        <p class="${
+          todo.checked ? "checked" : " "
+        } value" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
