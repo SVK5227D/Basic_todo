@@ -830,3 +830,63 @@ label #cancel {
         font-size: 25px;
     }
 }
+
+@media (max-width:300px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        width: 45%;
+        height: 100%;
+        background: #20212B;
+        transition: all .5s ease;
+    }
+
+    .sidebar header {
+        font-size: 25px;
+        color: rgb(255, 255, 255);
+        line-height: 70px;
+        text-align: center;
+        background: #20212B;
+        user-select: none;
+    }
+
+    .sidebar ul a {
+        display: block;
+        height: 100%;
+        width: 100%;
+        line-height: 65px;
+        font-size: 15px;
+        color: white;
+        padding-left: 30px;
+        box-sizing: border-box;
+        border-bottom: 1px solid black;
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        transition: .4s;
+        text-decoration: none;
+    }
+
+    ul li:hover a {
+        padding-left: 50px;
+        cursor: pointer;
+    }
+
+    .sidebar ul a i {
+        margin-right: 16px;
+    }
+
+    #check:checked~label #cancel {
+        top: 0.5%;
+        left: 22%;
+        font-size: 25px;
+    }
+
+    label #cancel {
+        z-index: 1111;
+        left: 100px;
+        top: 7px;
+        font-size: 18px;
+        color: #ffffff;
+        padding: 2px 4px;
+        transition: all .5s ease;
+    }
+}

@@ -43,6 +43,11 @@ function add() {
   if (inputValue.length == 0) {
     msgText = "You entered an empty text!";
     popupNotification(0, msgText);
+    if (windowWidth > 700) {
+      document.getElementById("popup").style.display = "block";
+    } else {
+      document.getElementById("popup").style.display = "none";
+    }
   }
   // Checking for duplicate value before storing it in the list
   else if (isDuplicate) {

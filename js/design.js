@@ -50,6 +50,11 @@ function add() {
   if (inputValue.length == 0) {
     msgText3 = "Your entered empty text!!!!!!!!";
     popupNotification(0, msgText3);
+    if (windowWidth > 700) {
+      document.getElementById("popup").style.display = "block";
+    } else {
+      document.getElementById("popup").style.display = "none";
+    }
   }
   //Checking the duplicate value before storig list
   else if (isDuplicate) {
