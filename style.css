@@ -27,7 +27,6 @@ li {
     margin-left: 20%;
 }
 
-
 .section.active {
     display: block;
 }
@@ -70,7 +69,6 @@ li {
 .form-container {
     text-align: center;
     display: block;
-    /* margin-left: 5%; */
 }
 
 .formwithbutton {
@@ -88,7 +86,8 @@ li {
 }
 
 #formTitle {
-    margin: 0%;
+    text-align: center;
+    margin-right: 2%;
     color: #fff;
     font-size: 25px;
 }
@@ -108,9 +107,10 @@ li {
     display: flex;
     border: 8px solid #17181f;
     background-color: #68686b;
-    padding: 1.5%;
+    padding: 1%;
     word-break: break-all;
     border-radius: 25px;
+    height: auto;
 }
 
 .toast2 {
@@ -214,7 +214,6 @@ li {
 }
 
 /* Delete Poppup */
-
 .modal-content {
     width: max-content;
     padding: 2%;
@@ -410,7 +409,7 @@ label #cancel {
         width: 95%;
         margin-left: 10%;
     }
-    
+
     .outerinput2 h3 {
         margin-left: 32%;
         font-size: 20px;
@@ -606,11 +605,20 @@ label #cancel {
         border: 8px solid #17181f;
         background-color: #68686b;
         height: auto;
-        padding: 2.5%;
+        padding: 1.8%;
         border-radius: 25px;
         word-break: break-all;
         width: auto;
-        max-width: 80%;
+        max-width: 90%;
+    }
+
+    .value {
+        margin-left: 3%;
+        width: 95%;
+    }
+
+    .check {
+        margin-top: 5.5%;
     }
 
     .msgTetxt {
@@ -633,14 +641,14 @@ label #cancel {
     }
 
     .view {
-        padding-left: 10%;
+        padding-left: 4%;
         color: #fff;
     }
 
     .scroll {
         width: 90%;
         height: fit-content;
-        max-height: 210px;
+        max-height: 240px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -723,7 +731,6 @@ label #cancel {
         display: block;
         position: absolute;
         z-index: 999;
-        /* background: #19aff5; */
         color: #fff;
         border-radius: 3px;
         cursor: pointer;
@@ -736,7 +743,6 @@ label #cancel {
         top: 25px;
         font-size: 35px;
         color: white;
-        /* padding: 6px 12px; */
         transition: all .5s;
     }
 
@@ -766,8 +772,12 @@ label #cancel {
         font-size: 25px;
     }
 
-    #check:checked~section {
-        margin-left: 250px;
+    #check:checked~include {
+        filter: brightness(60%);
+    }
+
+    #check:checked~.backgroundbody {
+        visibility: hidden;
     }
 
 }
