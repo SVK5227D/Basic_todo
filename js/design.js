@@ -63,7 +63,7 @@ function add() {
       } else {
         document.getElementById("popup").style.display = "none";
       }
-      
+      document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       msgText3 = "This value already entered in list";
       popupNotification(0, msgText3);
@@ -93,6 +93,7 @@ function add() {
       } else {
         document.getElementById("popup").style.display = "none";
       }
+      document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       // To store the value
       designList.push({
