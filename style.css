@@ -831,7 +831,7 @@ label #cancel {
     .scroll{
         width: 90%;
         height: fit-content;
-        max-height: 340px;
+        max-height: 320px;
         overflow-y: auto;
         overflow-x: hidden;
     }
