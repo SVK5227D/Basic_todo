@@ -387,32 +387,32 @@ label #cancel {
 @media (max-width: 700px) {
 
     /* Delete Poppup */
-.modal-content {
-    width: max-content;
-    padding: 2%;
-    background-color: #ffffff;
-    position: fixed;
-    top: 45%;
-    right: 10%;
-    border: 3px solid transparent;
-    z-index: 9;
-    border-radius: 25px;
-}
+    .modal-content {
+        width: max-content;
+        padding: 2%;
+        background-color: #ffffff;
+        position: fixed;
+        top: 45%;
+        right: 8%;
+        border: 3px solid transparent;
+        z-index: 9;
+        border-radius: 25px;
+    }
 
-.container p {
-    font-size: 18px;
-}
+    .container p {
+        font-size: 18px;
+    }
 
-.clearfix {
-    padding-top: 5%;
-    text-align: center;
-}
+    .clearfix {
+        padding-top: 5%;
+        text-align: center;
+    }
 
-.clearfix button {
-    padding: 1%;
-    font-size: 15px;
-    font-weight: bolder;
-}
+    .clearfix button {
+        padding: 1%;
+        font-size: 15px;
+        font-weight: bolder;
+    }
 
     .backgroundbody {
         width: 100%;
@@ -834,9 +834,7 @@ label #cancel {
 
 
 @media (min-height: 800px)and (min-height: 850px) {
-    .scroll {
-        
-    }
+    .scroll {}
 }
 
 @media (max-width:700px) {
@@ -856,7 +854,7 @@ label #cancel {
 }
 
 @media (max-width:450px) {
-    .scroll{
+    .scroll {
         width: 90%;
         height: fit-content;
         max-height: 320px;
@@ -864,11 +862,11 @@ label #cancel {
         overflow-x: hidden;
     }
 
-    
+
 }
 
 @media (max-width:400px) {
-    .scroll{
+    .scroll {
         width: 90%;
         height: fit-content;
         max-height: 305px;
@@ -878,7 +876,7 @@ label #cancel {
 }
 
 @media (max-width:380px) {
-    .scroll{
+    .scroll {
         width: 90%;
         height: fit-content;
         max-height: 280px;
