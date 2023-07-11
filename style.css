@@ -228,12 +228,11 @@ li {
     padding: 2%;
     background-color: #ffffff;
     position: fixed;
-    top: 50%;
-    /* right: 35%; */
+    top: 45%;
+    right:10%;
     border: 3px solid transparent;
     z-index: 9;
     border-radius: 25px;
-    left: 10%;
 }
 
 .container p {
@@ -465,7 +464,7 @@ label #cancel {
 
     #btn2 {
         display: block;
-        margin-left: 10%;
+        margin-left: 15%;
     }
 
     #btn2 {
