@@ -648,7 +648,7 @@ label #cancel {
     .scroll {
         width: 90%;
         height: fit-content;
-        max-height: 240px;
+        max-height: 235px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -780,4 +780,45 @@ label #cancel {
         visibility: hidden;
     }
 
+}
+
+/* @media (min-height:800px) {
+    .scroll{
+        width: 90%;
+        height: fit-content;
+        max-height: 305px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+@media (min-height:800px 900px) {
+    .scroll{
+        width: 90%;
+        height: fit-content;
+        max-height: 355px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+} */
+
+@media (min-height: 800px) and (max-height: 900px) {
+    .scroll {
+        width: 90%;
+        height: fit-content;
+        max-height: 318px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+
+@media (min-height: 800px)and (min-height: 850px) {
+    .scroll {
+        width: 90%;
+        height: fit-content;
+        max-height: 315px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 }
