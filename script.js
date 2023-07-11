@@ -291,13 +291,11 @@ function popupNotification(msg, msgText) {
     toast.classList.add("toast");
     toast.textContent = msgText;
     document.body.appendChild(toast);
-    
-    setTimeout(() => {    
-      document.getElementById("input").classList.add("invalid");  
+    document.getElementById("input").classList.add("invalid");
+    setTimeout(() => {
       toast.remove();
       document.getElementById("input").classList.remove("invalid");
     }, 2300);
-    
   } else {
     let toast2 = document.getElementById("toast2");
     document.getElementById("msgTetxt").innerHTML = msgText;
@@ -307,6 +305,9 @@ function popupNotification(msg, msgText) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
+    setTimeout(() => {
+      toast2.classList.remove("toast-active");
+    }, 3500);
   }
 }
 

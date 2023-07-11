@@ -58,6 +58,10 @@ li {
     color: #ffffff;
 }
 
+.form-container {
+    display: block;
+}
+
 #btn2 {
     display: none;
 }
@@ -83,6 +87,7 @@ li {
     width: 60px;
     font-size: large;
     background-color: #ef7098;
+    margin-left: 20%;
 }
 
 #formTitle {
@@ -201,6 +206,7 @@ li {
     background-color: #ef7098;
     width: 40px;
     height: 25px;
+    margin-right: 25px;
 }
 
 .value {
@@ -217,7 +223,7 @@ li {
 
 
 .check {
-    margin-top: 3.5%;
+    margin-top: 3%;
     justify-content: left;
     color: #ffff00;
 }
@@ -272,6 +278,8 @@ li {
 
 .invalid {
     border-color: red;
+    background-color: rgb(219, 150, 150);
+    color: #000;
 }
 
 .icon {
@@ -832,11 +840,6 @@ label #cancel {
     }
 }
 
-
-@media (min-height: 800px)and (min-height: 850px) {
-    .scroll {}
-}
-
 @media (max-width:700px) {
     .check {
         margin-top: 3.5%;
@@ -872,6 +875,12 @@ label #cancel {
         max-height: 305px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+}
+
+@media (max-width:400px) {
+    .check {
+        margin-top: 7%;
     }
 }
 
