@@ -37,7 +37,7 @@ li {
 }
 
 .outerinput {
-    height: 12%;
+    height: 15%;
 }
 
 /* body */
@@ -278,7 +278,7 @@ li {
 .toast {
     position: absolute;
     left: 45%;
-    top: 21%;
+    top:155px;
     font-size: larger;
     color: rgb(234, 87, 87);
     font-weight: bolder;
