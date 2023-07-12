@@ -142,7 +142,6 @@ function addingTodo(id) {
       listLength2 -= 1;
       completedListLength2 += 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength2;
-      console.log("List length" + listLength2);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedListLength2;
       if (personalList.length == 0) {
@@ -196,7 +195,6 @@ function listCompleted(id) {
       listLength2 += 1;
       completedListLength2 -= 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength2;
-      console.log("List length" + listLength2);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedListLength2;
       if (personalCompletedList.length == 0) {
@@ -289,10 +287,10 @@ function editList2(wl) {
 
 //------------------------           Deleting Function while delete a value in list          --------------------------
 function deleteList(wl) {
-  // debugger
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
   removeValue.addEventListener("click", function (event) {
+    event.preventDefault();
     personalList = personalList.filter((h, index) => wl != index);
     listLength -= 1;
     addingTodo();
@@ -314,10 +312,11 @@ function popupNotification(msg, msgText2) {
   if (msg == 0) {
     toast.classList.add("toast");
     toast.textContent = msgText2;
+    document.getElementById("input").classList.add("invalid");
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
-    }, 1300);
+    }, 2300);
   } else {
     let toast2 = document.getElementById("toast2");
     document.getElementById("msgTetxt").innerHTML = msgText2;
@@ -327,6 +326,9 @@ function popupNotification(msg, msgText2) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
+      setTimeout(() => {
+        toast2.classList.remove("toast-active");
+      }, 3500);
   }
 }
 // Function to close the confirmation dialog

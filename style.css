@@ -145,9 +145,7 @@ li {
     cursor: pointer;
 }
 
-.inputfield.invalid {
-    border-color: red;
-}
+
 
 .head {
     padding-top: 1.5%;
@@ -161,6 +159,11 @@ li {
 .view {
     padding-left: 10%;
     color: #fff;
+}
+
+.list{
+    display:flex;
+  flex-direction: column-reverse;
 }
 
 #taskValue {
@@ -835,6 +838,24 @@ label #cancel {
         max-height: 318px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+    
+}
+
+@media (max-width:900px) {
+    .invalid {
+        border-color: red;
+        background-color: rgb(219, 150, 150);
+        color: #000;
+    }
+    .toast {
+        position: absolute;
+        left: 40%;
+        top: 20%;
+        font-size: larger;
+        color: rgb(234, 87, 87);
+        font-weight: bolder;
+        border-radius: 5px;
     }
 }
 

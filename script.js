@@ -33,7 +33,6 @@ form.addEventListener("submit", function (event) {
 // Function to add a value
 function add() {
   let inputValue = input.value.trim();
-
   // Checking duplicate value
   var isDuplicate = List.some(
     (store) => store.value.toUpperCase() == inputValue.toUpperCase()
@@ -267,26 +266,24 @@ function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
   removeValue.addEventListener("click", function (event) {
+    event.preventDefault();
     List = List.filter((h, index) => wl != index);
     listLength -= 1;
     addingTodo();
-
     if (listLength == 0) {
       List = [];
       localStorage.setItem("List", JSON.stringify(List));
     }
-
-    localStorage.setItem("List", JSON.stringify(List));
     msgText = "Todo has been deleted";
     popupNotification(1, msgText);
     document.getElementById("id01").style.display = "none";
+    localStorage.setItem("List", JSON.stringify(List));
   });
 }
 
 // Popup notification function
 function popupNotification(msg, msgText) {
   const toast = document.createElement("div");
-
   if (msg == 0) {
     toast.classList.add("toast");
     toast.textContent = msgText;

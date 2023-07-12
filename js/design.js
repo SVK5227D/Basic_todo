@@ -11,10 +11,8 @@ let listLength3 = designList.length;
 let designCompletedList =
   JSON.parse(localStorage.getItem("designCompletedList")) || [];
 let completedListLength3 = designCompletedList.length;
-
 // Check the width of the window
 var windowWidth = window.innerWidth;
-
 //array to store
 let editlisttochange = -1;
 // Passing empty value for toast message
@@ -48,7 +46,7 @@ function add() {
   );
   //Checking the input is empty or not empty
   if (inputValue.length == 0) {
-    msgText3 = "Your entered empty text!!!!!!!!";
+    msgText3 = "You entered an empty text!";
     popupNotification(0, msgText3);
     if (windowWidth > 700) {
       document.getElementById("popup").style.display = "block";
@@ -142,7 +140,6 @@ function addingTodo(id) {
       listLength3 -= 1;
       completedListLength3 += 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength3;
-      console.log("List length" + listLength3);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedListLength3;
       if (designList.length == 0) {
@@ -195,7 +192,6 @@ function listCompleted(id) {
       listLength3 += 1;
       completedListLength3 -= 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength3;
-      console.log("List length" + listLength3);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedListLength3;
       if (designCompletedList.length == 0) {
@@ -289,6 +285,7 @@ function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
   removeValue.addEventListener("click", function (event) {
+    event.preventDefault();
     designList = designList.filter((h, index) => wl != index);
     listLength3 -= 1;
     addingTodo();
@@ -309,10 +306,11 @@ function popupNotification(msg, msgText3) {
   if (msg == 0) {
     toast.classList.add("toast");
     toast.textContent = msgText3;
+    document.getElementById("input").classList.add("invalid");
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
-    }, 1300);
+    }, 2300);
   } else {
     let toast2 = document.getElementById("toast2");
     document.getElementById("msgTetxt").innerHTML = msgText3;
@@ -322,6 +320,9 @@ function popupNotification(msg, msgText3) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
+      setTimeout(() => {
+        toast2.classList.remove("toast-active");
+      }, 3500);
   }
 }
 // Function to close the confirmation dialog

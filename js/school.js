@@ -137,7 +137,6 @@ function addingTodo(id) {
       listLength4 -= 1;
       completedlistLength4 += 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength4;
-      console.log("List length" + listLength4);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedlistLength4;
       if (schoolList.length == 0) {
@@ -191,7 +190,6 @@ function listCompleted(id) {
       listLength4 += 1;
       completedlistLength4 -= 1;
       document.getElementById("taskValue").innerHTML = "Task -  " + listLength4;
-      console.log("List length" + listLength4);
       document.getElementById("completedListLength").innerHTML =
         "Completed -  " + completedlistLength4;
       if (schoolCompletedList.length == 0) {
@@ -288,15 +286,14 @@ function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
   removeValue.addEventListener("click", function (event) {
+    event.preventDefault();
     schoolList = schoolList.filter((h, index) => wl != index);
     listLength4 -= 1;
     addingTodo();
-
     if (listLength4 == 0) {
       schoolList = [];
       localStorage.setItem("schoolList", JSON.stringify(schoolList));
     }
-
     localStorage.setItem("schoolList", JSON.stringify(schoolList));
     msgText = "Todo has been deleted";
     popupNotification(1, msgText4);
@@ -310,10 +307,11 @@ function popupNotification(msg, msgText4) {
   if (msg == 0) {
     toast.classList.add("toast");
     toast.textContent = msgText4;
+    document.getElementById("input").classList.add("invalid");
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
-    }, 1300);
+    }, 2300);
   } else {
     let toast2 = document.getElementById("toast2");
     document.getElementById("msgTetxt").innerHTML = msgText4;
@@ -323,6 +321,9 @@ function popupNotification(msg, msgText4) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
+    setTimeout(() => {
+      toast2.classList.remove("toast-active");
+    }, 3500);
   }
 }
 // Function to close the confirmation dialog
