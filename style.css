@@ -93,8 +93,8 @@ li {
 #formTitle {
     text-align: center;
     margin-top: 0;
-    margin-right: 2%;
-    color: #fff;
+    margin-right: 5%;
+    color: #ffffff;
     font-size: 25px;
 }
 
@@ -178,7 +178,7 @@ li {
     top: 0;
     width: 90%;
     height: fit-content;
-    max-height: 200px;
+    max-height: 210px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -854,17 +854,6 @@ label #cancel {
 
 }
 
-@media (max-height: 950px) {
-    .scroll {
-        width: 90%;
-        height: fit-content;
-        max-height: 210px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-}
-
-
 @media (max-width:900px) {
     .invalid {
         border-color: red;
@@ -925,11 +914,21 @@ label #cancel {
     }
 }
 
+@media (max-width:500px) {
+    .scroll {
+        width: 90%;
+        height: fit-content;
+        max-height: 260px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
 @media (max-width:380px) {
     .scroll {
         width: 90%;
         height: fit-content;
-        max-height: 280px;
+        max-height: 265px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -1037,8 +1036,4 @@ label #cancel {
     #check:checked~.backgroundbody {
         visibility: hidden;
     }
-}
-
-@media (max-width:1900px) {
-    
 }
