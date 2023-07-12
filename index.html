@@ -45,9 +45,9 @@
         </ul>
     </div>
     <include id="section1" class="section active ">
-        <div class="backgroundbody">
-            <h3 class="head">Home</h3>
-            <div class="outerinput">
+        <div class="backgroundbody" style="height: 100%;">
+            <h3 class="head" style="height: 6%;">Home</h3>
+            <div class="outerinput" >
                 <div>
                     <div class="addbutton">
                         <button onclick="openForm()">+</button>
@@ -67,7 +67,6 @@
                             </form>
                         </div>
                     </div>
-
                     <div class="toast2" id="toast2">
                         <p class="msgTetxt" id="msgTetxt"></p>
                         <button id="toastCloseBtn" class="toastCloseBtn">&#10005;</button>
@@ -87,17 +86,17 @@
                     </div>
                 </form>
             </div>
-            <div class="outerinput2">
+            <div class="outerinput2" style="height: 65%;">
                 <h3>Todo's List</h3>
                 <!-- To view the task after add,delete,edit  -->
-                <div style="margin-top: 3%">
+                <div style="margin-top: 3%" class="listRenderView">
                     <p id="taskValue" class="list"></p>
                     <div class="scroll">
                         <div id="list" class="view"></div>
                     </div>
                 </div>
                 <!-- To view the task after add,delete,edit  -->
-                <div style="margin-top: 3%">
+                <div style="margin-top: 5%" class="compListRenderView">
                     <p id="completedListLength"></p>
                     <div class="scroll">
                         <div id="completedList" class="view"></div>
