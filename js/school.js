@@ -208,7 +208,7 @@ function listCompleted(id) {
         ></i> 
         <p class="${
           todo.checked ? "checked" : " "
-        } value" data-action="check">${todo.value}</p>
+        } compvalue" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
@@ -295,7 +295,7 @@ function deleteList(wl) {
       localStorage.setItem("schoolList", JSON.stringify(schoolList));
     }
     localStorage.setItem("schoolList", JSON.stringify(schoolList));
-    msgText = "Todo has been deleted";
+    msgText4 = "Todo has been deleted";
     popupNotification(1, msgText4);
     document.getElementById("id01").style.display = "none";
   });
@@ -311,6 +311,7 @@ function popupNotification(msg, msgText4) {
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
+      document.getElementById("input").classList.remove("invalid");
     }, 2300);
   } else {
     let toast2 = document.getElementById("toast2");
@@ -321,9 +322,6 @@ function popupNotification(msg, msgText4) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
-    setTimeout(() => {
-      toast2.classList.remove("toast-active");
-    }, 3500);
   }
 }
 // Function to close the confirmation dialog

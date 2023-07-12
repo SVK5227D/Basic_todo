@@ -111,9 +111,9 @@ li {
 
 .listview {
     display: flex;
-    border: 8px solid #17181f;
+    border: 5px solid #17181f;
     background-color: #68686b;
-    padding: 1%;
+    padding: 0.5%;
     word-break: break-all;
     border-radius: 25px;
     height: auto;
@@ -161,9 +161,9 @@ li {
     color: #fff;
 }
 
-.list{
-    display:flex;
-  flex-direction: column-reverse;
+.list {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 #taskValue {
@@ -225,7 +225,8 @@ li {
 
 
 .check {
-    margin-top: 3%;
+    margin-left: 1%;
+    margin-top: 3.2%;
     justify-content: left;
     color: #ffff00;
 }
@@ -271,7 +272,7 @@ li {
 .toast {
     position: absolute;
     left: 45%;
-    top: 22%;
+    top: 21%;
     font-size: larger;
     color: rgb(234, 87, 87);
     font-weight: bolder;
@@ -292,7 +293,7 @@ li {
 }
 
 .msgTetxt {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .toast2 {
@@ -301,7 +302,8 @@ li {
     position: absolute;
     top: 50px;
     right: -500px;
-    background-color: black;
+    background-color: rgb(31, 204, 103);
+    color: #000;
     border-radius: 12px;
     padding: 0.5rem 1rem;
     border: 5px solid #029c91;
@@ -323,6 +325,7 @@ li {
 }
 
 .toastCloseBtn {
+    margin-left: 2%;
     background-color: black;
     color: white;
     border: none;
@@ -392,6 +395,10 @@ ul li:hover a {
 label #btnlist,
 label #cancel {
     display: none;
+}
+
+.compvalue {
+    margin-left: 3%;
 }
 
 @media (max-width: 700px) {
@@ -648,7 +655,7 @@ label #cancel {
     .listview {
         display: flex;
         position: relative;
-        border: 8px solid #17181f;
+        border: 5px solid #17181f;
         background-color: #68686b;
         height: auto;
         padding: 1.8%;
@@ -661,6 +668,11 @@ label #cancel {
     .value {
         margin-left: 3%;
         width: 95%;
+    }
+
+    .compvalue {
+        margin-left: 3%;
+        width: 100%;
     }
 
     .check {
@@ -835,12 +847,23 @@ label #cancel {
     .scroll {
         width: 90%;
         height: fit-content;
-        max-height: 318px;
+        max-height: 320px;
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
 }
+
+@media (max-height: 950px) {
+    .scroll {
+        width: 90%;
+        height: fit-content;
+        max-height: 210px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
 
 @media (max-width:900px) {
     .invalid {
@@ -848,6 +871,7 @@ label #cancel {
         background-color: rgb(219, 150, 150);
         color: #000;
     }
+
     .toast {
         position: absolute;
         left: 40%;
@@ -1013,4 +1037,8 @@ label #cancel {
     #check:checked~.backgroundbody {
         visibility: hidden;
     }
+}
+
+@media (max-width:1900px) {
+    
 }

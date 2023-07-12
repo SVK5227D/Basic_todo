@@ -163,9 +163,7 @@ function listCompleted(id) {
       "Completed - " + completedListLength;
     return;
   }
-
   forward2.innerHTML = "";
-
   CompletedList.forEach((todo, index) => {
     if (todo.checked == false) {
       List.push(todo);
@@ -192,12 +190,11 @@ function listCompleted(id) {
           } check"
           data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? "checked" : ""} value" data-action="check">${
-      todo.value
-    }</p>
+        <p class="${
+          todo.checked ? "checked" : ""
+        } compvalue" data-action="check">${todo.value}</p>
       </div>`;
-  });
-
+  }); 
   if (completedListLength > 0) {
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength;
@@ -260,7 +257,6 @@ function editList(wl) {
   input.value = List[wl].value;
   EditList = wl;
 }
-
 // Function to delete a todo
 function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
@@ -302,9 +298,6 @@ function popupNotification(msg, msgText) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
-    setTimeout(() => {
-      toast2.classList.remove("toast-active");
-    }, 3500);
   }
 }
 

@@ -212,7 +212,7 @@ function listCompleted(id) {
         data-action="checkCompleted"
         ></i> 
         <p class="${todo.checked ? "checked" : " "
-      } value" data-action="check">${todo.value}</p>
+      } compvalue" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
@@ -292,9 +292,9 @@ function deleteList(wl) {
   removeValue.addEventListener("click", function (event) {
     event.preventDefault();
     personalList = personalList.filter((h, index) => wl != index);
-    listLength -= 1;
+    listLength2 -= 1;
     addingTodo();
-    if (listLength == 0) {
+    if (listLength2 == 0) {
       personalList = [];
       localStorage.setItem("personalList", JSON.stringify(personalList));
     }
@@ -316,6 +316,7 @@ function popupNotification(msg, msgText2) {
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
+      document.getElementById("input").classList.remove("invalid");
     }, 2300);
   } else {
     let toast2 = document.getElementById("toast2");
@@ -326,9 +327,6 @@ function popupNotification(msg, msgText2) {
       .addEventListener("click", function () {
         toast2.classList.remove("toast-active");
       });
-      setTimeout(() => {
-        toast2.classList.remove("toast-active");
-      }, 3500);
   }
 }
 // Function to close the confirmation dialog
