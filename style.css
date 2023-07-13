@@ -93,7 +93,7 @@ li {
 }
 
 #formTitle {
-    margin-bottom:5px;
+    margin-bottom: 5px;
     text-align: center;
     margin-top: 0;
     margin-right: 5%;
@@ -482,7 +482,7 @@ label #cancel {
         height: max-content;
     }
 
-    .toast{
+    .toast {
         display: none;
     }
 

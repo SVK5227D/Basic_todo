@@ -125,7 +125,7 @@ function add() {
 function addingTodo(id) {
   if (personalList.length == 0) {
     forward.innerHTML =
-      '<center class ="valueMessage">Your Todo List has been empty</center>';
+      '<center class ="valueMessage" style="margin-top:50px; font-size:20px">Your Todo List has been empty</center>';
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength2;
     return;
   }
@@ -176,7 +176,7 @@ function addingTodo(id) {
 function listCompleted(id) {
   if (personalCompletedList.length == 0) {
     forward2.innerHTML =
-      '<center class ="valueMessage">There is no Completed task</center>';
+      '<center class ="valueMessage" style="margin-top:50px; font-size:20px">There is no Completed task</center>';
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength2;
     return;
@@ -318,12 +318,15 @@ function deleteList(wl) {
 function popupNotification(msg, msgText2) {
   const toast = document.createElement("div");
   if (msg == 0) {
-    toast.classList.add("toast");
+    document.getElementById("toastmsg").classList.remove("toast");
+    document.getElementById("toastmsg").classList.add("toast3");
     toast.textContent = msgText2;
     document.getElementById("input").classList.add("invalid");
     document.body.appendChild(toast);
     setTimeout(() => {
       toast.remove();
+      document.getElementById("toastmsg").classList.remove("toast");
+      document.getElementById("toastmsg").classList.add("toast");
       document.getElementById("input").classList.remove("invalid");
     }, 2300);
   } else {

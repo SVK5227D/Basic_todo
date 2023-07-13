@@ -103,7 +103,7 @@ function add() {
 function addingTodo(id) {
   if (List.length == 0) {
     forward.innerHTML =
-      '<center class="valueMessage">Your Todo List is empty</center>';
+      '<center class="valueMessage" style="margin-top:50px; font-size:20px">Your Todo List is empty</center>';
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
     return;
   }
@@ -154,7 +154,7 @@ function listCompleted(id) {
   CompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   if (CompletedList.length == 0) {
     forward2.innerHTML =
-      '<center class="valueMessage">There are no completed tasks</center>';
+      '<center class="valueMessage" style="margin-top:50px; font-size:20px">There are no completed tasks</center>';
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength;
     return;
@@ -279,7 +279,6 @@ function deleteList(wl) {
   });
 }
 
-
 // Popup notification function
 function popupNotification(msg, msgText) {
   const toast = document.createElement("div");
@@ -292,7 +291,7 @@ function popupNotification(msg, msgText) {
     setTimeout(() => {
       toast.remove();
       document.getElementById("toastmsg").classList.remove("toast");
-    document.getElementById("toastmsg").classList.add("toast");
+      document.getElementById("toastmsg").classList.add("toast");
       document.getElementById("input").classList.remove("invalid");
     }, 2300);
   } else {
