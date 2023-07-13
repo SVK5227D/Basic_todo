@@ -97,6 +97,7 @@ function add() {
     } else {
       // To store the value
       schoolList.push({
+        time: new Date(),
         value: inputValue,
         checked: false,
       });
@@ -122,6 +123,7 @@ function addingTodo(id) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength4;
     return;
   }
+  schoolList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward.innerHTML = "";
   // Adding values to list
@@ -173,6 +175,7 @@ function listCompleted(id) {
       "Completed - " + completedlistLength4;
     return;
   }
+  schoolCompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward2.innerHTML = "";
   // Adding values to list
@@ -259,8 +262,7 @@ function completedMove(wl) {
   popupNotification(1, msgText4);
 }
 
-// -------------------------------      Completed Function                                 ------------------------------------------
-
+// -------------------------------      Completed Function         ------------------------------------------
 function checkList(wl) {
   schoolList = schoolList.map((todo, index) => ({
     ...todo,

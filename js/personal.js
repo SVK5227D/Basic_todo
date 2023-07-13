@@ -102,6 +102,7 @@ function add() {
     } else {
       // To store the value
       personalList.push({
+        time: new Date(),
         value: inputValue,
         checked: false,
       });
@@ -127,6 +128,7 @@ function addingTodo(id) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength2;
     return;
   }
+  personalList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward.innerHTML = "";
   // Adding values to list
@@ -178,6 +180,7 @@ function listCompleted(id) {
       "Completed - " + completedListLength2;
     return;
   }
+  personalCompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward2.innerHTML = "";
   // Adding values to list
@@ -211,8 +214,9 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? "checked" : " "
-      } compvalue" data-action="check">${todo.value}</p>
+        <p class="${
+          todo.checked ? "checked" : " "
+        } compvalue" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list

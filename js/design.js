@@ -100,6 +100,7 @@ function add() {
     } else {
       // To store the value
       designList.push({
+        time: new Date(),
         value: inputValue,
         checked: false,
       });
@@ -125,6 +126,7 @@ function addingTodo(id) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength3;
     return;
   }
+  designList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward.innerHTML = "";
   // Adding values to list
@@ -175,6 +177,7 @@ function listCompleted(id) {
       "Completed - " + completedListLength3;
     return;
   }
+  designCompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   // Clear the list before enter the value
   forward2.innerHTML = "";
   // Adding values to list

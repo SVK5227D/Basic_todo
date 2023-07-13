@@ -91,6 +91,7 @@ function add() {
       document.getElementById("formTitle").innerHTML = "Add todo";
     } else {
       List.push({
+        time: new Date(),
         value: inputValue,
         checked: false,
       });
@@ -117,8 +118,9 @@ function addingTodo(id) {
   }
 
   forward.innerHTML = "";
-
+  List.sort((a, b) => new Date(b.time) - new Date(a.time));
   List.forEach((todo, index) => {
+    console.log(todo.time);
     if (todo.checked == true) {
       CompletedList.push(todo);
       List = List.filter((h, index) => id != index);
@@ -136,6 +138,8 @@ function addingTodo(id) {
         return;
       }
     }
+    // Sort the list based on time
+
     forward.innerHTML += `
       <div class="listview" id=${index}>
         <i 
@@ -156,6 +160,7 @@ function addingTodo(id) {
 
 // Function to display the completed list
 function listCompleted(id) {
+  CompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   if (CompletedList.length == 0) {
     forward2.innerHTML =
       '<center class="valueMessage">There are no completed tasks</center>';
@@ -194,7 +199,7 @@ function listCompleted(id) {
           todo.checked ? "checked" : ""
         } compvalue" data-action="check">${todo.value}</p>
       </div>`;
-  }); 
+  });
   if (completedListLength > 0) {
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength;
@@ -265,7 +270,8 @@ function deleteList(wl) {
     event.preventDefault();
     List = List.filter((h, index) => wl != index);
     listLength -= 1;
-    addingTodo();
+    id = 0;
+    addingTodo(id);
     if (listLength == 0) {
       List = [];
       localStorage.setItem("List", JSON.stringify(List));

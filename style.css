@@ -37,7 +37,7 @@ li {
 }
 
 .outerinput {
-    height: 15%;
+    height: 12%;
 }
 
 /* body */
@@ -152,9 +152,8 @@ li {
     cursor: pointer;
 }
 
-
-
 .head {
+    height: 6%;
     padding-top: 1.5%;
     margin-top: 0%;
     color: white;
@@ -181,10 +180,15 @@ li {
     margin: 0;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 .scroll {
     top: 0;
     width: 90%;
-    height: 100%;
+    height: auto;
+    max-height: 50%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -228,7 +232,6 @@ li {
     text-decoration-color: #000;
     color: #fff;
 }
-
 
 .check {
     margin-left: 2%;
@@ -278,7 +281,7 @@ li {
 .toast {
     position: absolute;
     left: 45%;
-    top:155px;
+    top: 155px;
     font-size: larger;
     color: rgb(234, 87, 87);
     font-weight: bolder;
@@ -477,7 +480,7 @@ label #cancel {
     }
 
     .outerinput2 h3 {
-        margin-left: 32%;
+        margin-left: 28%;
         font-size: 20px;
     }
 
@@ -618,7 +621,6 @@ label #cancel {
         width: 85%;
         font-size: x-large;
         transform: translateX(-50%);
-        padding: 10px 20px;
         background-color: rgb(234, 87, 87);
         color: #000000;
         font-weight: bolder;
@@ -708,6 +710,7 @@ label #cancel {
     }
 
     .head {
+        height: 4%;
         margin-top: 0%;
         color: white;
         margin-left: 40%;
@@ -717,24 +720,28 @@ label #cancel {
 
     .view {
         padding-left: 4%;
-        color: #fff;
+        color: #ffffff;
     }
 
     .scroll {
-        width: 90%;
-        height: 100%;
+        top: 0;
+        width: 95%;
+        height: auto;
+        max-height: 55%;
         overflow-y: scroll;
         overflow-x: hidden;
     }
 
     #deletebutton {
+        margin-top: 12px;
         top: 15%;
         margin-left: 5%;
         left: 85%;
     }
 
     #editbutton {
-        top: 3%;
+        margin-top: 12px;
+        top: 13%;
         left: 70%;
     }
 
@@ -788,7 +795,7 @@ label #cancel {
     }
 
     .head {
-        padding-top: 8%;
+        padding-top: 5%;
     }
 
     ul li:hover a {
