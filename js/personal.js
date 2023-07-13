@@ -84,6 +84,7 @@ function add() {
     if (EditList2 >= 0) {
       personalList = personalList.map((q, index) => ({
         ...q,
+        time: index == EditList2 ? new Date() : q.time,
         value: index == EditList2 ? inputValue : q.value,
       }));
       EditList2 = -1;
@@ -308,6 +309,9 @@ function deleteList(wl) {
     popupNotification(1, msgText2);
     document.getElementById("id01").style.display = "none";
   });
+
+  // Remove the event listener after deleting the item
+  this.removeEventListener("click", arguments.callee);
 }
 
 //----------------------     Popup message ----------------------------

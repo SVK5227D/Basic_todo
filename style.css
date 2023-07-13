@@ -48,6 +48,7 @@ li {
 }
 
 .outerinput2 h3 {
+    padding-top: 2px;
     margin-left: 40%;
     font-size: 20px;
 }
@@ -92,6 +93,7 @@ li {
 }
 
 #formTitle {
+    margin-bottom:5px;
     text-align: center;
     margin-top: 0;
     margin-right: 5%;
@@ -222,7 +224,7 @@ li {
 }
 
 .value {
-    top: 2%;
+    margin-top: 13px;
     margin-left: 2.5%;
     width: 70%;
 }
@@ -278,14 +280,17 @@ li {
 }
 
 /* Toast msg  */
-.toast {
-    position: absolute;
-    left: 45%;
-    top: 155px;
-    font-size: larger;
+.toast3 {
+    margin-left: 25%;
+    display: block;
+    font-size: 15px;
     color: rgb(234, 87, 87);
     font-weight: bolder;
     border-radius: 5px;
+}
+
+.toast {
+    display: none;
 }
 
 .invalid {
@@ -414,7 +419,9 @@ label #cancel {
 }
 
 .compvalue {
-    margin-left: 3%;
+    margin-top: 13px;
+    margin-left: 2.5%;
+    width: 100%;
 }
 
 @media (max-width: 700px) {
@@ -453,12 +460,30 @@ label #cancel {
         left: 0%;
     }
 
+
     .section {
         display: none;
         position: relative;
         background-color: #17181F;
         height: 100%;
         margin-left: 0%;
+    }
+
+    .toast3 {
+        position: absolute;
+        top: 52%;
+        left: 70%;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+        color: red;
+        padding: 20px;
+        width: 250px;
+        border-radius: 5px;
+        height: max-content;
+    }
+
+    .toast{
+        display: none;
     }
 
     .form-popup {
@@ -562,7 +587,7 @@ label #cancel {
     }
 
     .popupButton {
-        margin-top: 3%;
+        margin-top: 15%;
     }
 
     .listRenderView {
@@ -612,19 +637,6 @@ label #cancel {
         color: white;
         border: none;
         cursor: pointer;
-    }
-
-    .toast {
-        position: absolute;
-        width: max-content;
-        margin-left: 5%;
-        width: 85%;
-        font-size: x-large;
-        transform: translateX(-50%);
-        background-color: rgb(234, 87, 87);
-        color: #000000;
-        font-weight: bolder;
-        border-radius: 5px;
     }
 
     .addbutton {
@@ -686,11 +698,6 @@ label #cancel {
         word-break: break-all;
         width: auto;
         max-width: 90%;
-    }
-
-    .value {
-        margin-left: 3%;
-        width: 95%;
     }
 
     .compvalue {

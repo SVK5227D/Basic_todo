@@ -82,6 +82,7 @@ function add() {
     if (editlisttochange >= 0) {
       designList = designList.map((q, index) => ({
         ...q,
+        time: index == editlisttochange ? new Date() : q.time,
         value: index == editlisttochange ? inputValue : q.value,
       }));
       editlisttochange = -1;
@@ -211,8 +212,9 @@ function listCompleted(id) {
         class="bi ${todo.checked ? "bi-check-circle-fill" : "bi-circle"} check"
         data-action="checkCompleted"
         ></i> 
-        <p class="${todo.checked ? "checked" : " "
-      } compvalue" data-action="check">${todo.value}</p>
+        <p class="${
+          todo.checked ? "checked" : " "
+        } compvalue" data-action="check">${todo.value}</p>
         </div>`;
   });
   // Showing length in list
@@ -301,6 +303,8 @@ function deleteList(wl) {
     popupNotification(1, msgText3);
     document.getElementById("id01").style.display = "none";
   });
+  // Remove the event listener after deleting the item
+  this.removeEventListener("click", arguments.callee);
 }
 
 //----------------------     Popup message              ----------------------------

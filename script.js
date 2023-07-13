@@ -42,11 +42,6 @@ function add() {
   if (inputValue.length == 0) {
     msgText = "You entered an empty text!";
     popupNotification(0, msgText);
-    if (windowWidth > 700) {
-      document.getElementById("popup").style.display = "block";
-    } else {
-      document.getElementById("popup").style.display = "none";
-    }
   }
   // Checking for duplicate value before storing it in the list
   else if (isDuplicate) {
@@ -64,11 +59,6 @@ function add() {
     } else {
       msgText = "This value is already entered in the list";
       popupNotification(0, msgText);
-      if (windowWidth > 700) {
-        document.getElementById("popup").style.display = "block";
-      } else {
-        document.getElementById("popup").style.display = "none";
-      }
     }
   }
   // Adding or editing the value
@@ -76,6 +66,7 @@ function add() {
     if (EditList >= 0) {
       List = List.map((q, index) => ({
         ...q,
+        time: index == EditList ? new Date() : q.time,
         value: index == EditList ? inputValue : q.value,
       }));
       EditList = -1;
@@ -266,33 +257,42 @@ function editList(wl) {
 function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
+
   removeValue.addEventListener("click", function (event) {
     event.preventDefault();
-    List = List.filter((h, index) => wl != index);
+    List = List.filter((_, index) => index != wl);
     listLength -= 1;
-    id = 0;
-    addingTodo(id);
-    if (listLength == 0) {
+
+    if (listLength === 0) {
       List = [];
       localStorage.setItem("List", JSON.stringify(List));
     }
+
     msgText = "Todo has been deleted";
     popupNotification(1, msgText);
     document.getElementById("id01").style.display = "none";
     localStorage.setItem("List", JSON.stringify(List));
+    addingTodo();
+
+    // Remove the event listener after deleting the item
+    this.removeEventListener("click", arguments.callee);
   });
 }
+
 
 // Popup notification function
 function popupNotification(msg, msgText) {
   const toast = document.createElement("div");
   if (msg == 0) {
-    toast.classList.add("toast");
+    document.getElementById("toastmsg").classList.remove("toast");
+    document.getElementById("toastmsg").classList.add("toast3");
     toast.textContent = msgText;
     document.body.appendChild(toast);
     document.getElementById("input").classList.add("invalid");
     setTimeout(() => {
       toast.remove();
+      document.getElementById("toastmsg").classList.remove("toast");
+    document.getElementById("toastmsg").classList.add("toast");
       document.getElementById("input").classList.remove("invalid");
     }, 2300);
   } else {

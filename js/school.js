@@ -79,6 +79,7 @@ function add() {
     if (editList4 >= 0) {
       schoolList = schoolList.map((q, index) => ({
         ...q,
+        time: index == editList4 ? new Date() : q.time,
         value: index == editList4 ? inputValue : q.value,
       }));
       editList4 = -1;
@@ -301,6 +302,9 @@ function deleteList(wl) {
     popupNotification(1, msgText4);
     document.getElementById("id01").style.display = "none";
   });
+
+  // Remove the event listener after deleting the item
+  this.removeEventListener("click", arguments.callee);
 }
 
 //----------------------     Popup message ----------------------------
