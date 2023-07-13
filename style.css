@@ -477,7 +477,6 @@ label #cancel {
         transform: translate(-50%, -50%);
         color: red;
         padding: 20px;
-        width: 250px;
         border-radius: 5px;
         height: max-content;
     }
@@ -544,9 +543,10 @@ label #cancel {
     }
 
     .popupButton {
+        margin-top: 22%;
         display: flex;
         padding: 2%;
-        margin-top: 22%;
+        
     }
 
     #btn2 {
@@ -586,10 +586,6 @@ label #cancel {
         font-size: 15px;
         border-radius: 30px;
         color: #EF7098;
-    }
-
-    .popupButton {
-        margin-top: 15%;
     }
 
     .listRenderView {
