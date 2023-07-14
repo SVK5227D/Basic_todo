@@ -111,7 +111,6 @@ function addingTodo(id) {
   forward.innerHTML = "";
   List.sort((a, b) => new Date(b.time) - new Date(a.time));
   List.forEach((todo, index) => {
-    console.log(todo.time);
     if (todo.checked == true) {
       CompletedList.push(todo);
       List = List.filter((h, index) => id != index);
