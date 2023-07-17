@@ -45,6 +45,7 @@ li {
     margin-left: 15%;
     color: #fff;
     width: 65%;
+    height: 65%;
 }
 
 .outerinput2 h3 {
@@ -155,13 +156,11 @@ li {
 }
 
 .head {
+    margin: 0;
+    text-align: center;
     height: 6%;
-    padding-top: 1.5%;
-    margin-top: 0%;
     color: white;
-    margin-left: 43.5%;
     font-size: 30px;
-    margin-bottom: 1%;
 }
 
 .view {
@@ -182,15 +181,11 @@ li {
     margin: 0;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 .scroll {
     top: 0;
     width: 90%;
     height: auto;
-    max-height: 50%;
+    max-height: 52%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -268,6 +263,7 @@ li {
     padding: 1%;
     font-size: 15px;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .clearfix button:hover {
@@ -425,6 +421,9 @@ label #cancel {
 }
 
 @media (max-width: 700px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
 
     /* Delete Poppup */
     .modal-content {
@@ -492,7 +491,6 @@ label #cancel {
         left: 0;
         width: 50%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
 
@@ -500,7 +498,8 @@ label #cancel {
         margin-top: 0%;
         color: #fff;
         width: 95%;
-        margin-left: 10%;
+        margin: 0%;
+        height: 90%;
     }
 
     .outerinput2 h3 {
@@ -546,7 +545,7 @@ label #cancel {
         margin-top: 22%;
         display: flex;
         padding: 2%;
-        
+
     }
 
     #btn2 {
@@ -716,15 +715,11 @@ label #cancel {
 
     .head {
         height: 4%;
-        margin-top: 0%;
         color: white;
-        margin-left: 40%;
-        margin-bottom: 4%;
         font-size: x-large;
     }
 
     .view {
-        padding-left: 4%;
         color: #ffffff;
     }
 
@@ -732,7 +727,7 @@ label #cancel {
         top: 0;
         width: 95%;
         height: auto;
-        max-height: 55%;
+        max-height: 45%;
         overflow-y: scroll;
         overflow-x: hidden;
     }
@@ -799,9 +794,6 @@ label #cancel {
         transition: .4s;
     }
 
-    .head {
-        padding-top: 5%;
-    }
 
     ul li:hover a {
         padding-left: 50px;
