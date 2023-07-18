@@ -5,7 +5,6 @@ var input = document.getElementById("input");
 // Getting elements to display lists in HTML
 var forward = document.getElementById("list");
 var forward2 = document.getElementById("completedList");
-
 // Getting data from localStorage
 let List = JSON.parse(localStorage.getItem("List")) || [];
 let listLength = List.length;
@@ -18,10 +17,6 @@ let msgText;
 
 // Check the width of the window
 var windowWidth = window.innerWidth;
-
-// Variable to keep track of selected task id
-let selectedTaskId = -1;
-
 //Calling function to getvalue in localstorage
 addingTodo();
 listCompleted();
@@ -40,7 +35,6 @@ function add() {
   var isDuplicate = List.some(
     (store) => store.value.toUpperCase() == inputValue.toUpperCase()
   );
-
   // Checking if the input is empty
   if (inputValue.length == 0) {
     msgText = "You entered an empty text!";
@@ -111,7 +105,6 @@ function addingTodo() {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
     return;
   }
-
   forward.innerHTML = "";
   List.sort((a, b) => new Date(b.time) - new Date(a.time));
   List.forEach((todo, index) => {
@@ -123,7 +116,6 @@ function addingTodo() {
       listLength -= 1;
       completedListLength += 1;
       document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
-
       if (List.length === 0) {
         forward.innerHTML =
           '<center class="valueMessage">Your Todo List is empty</center>';
@@ -205,8 +197,11 @@ forward.addEventListener("click", (event) => {
   var target = event.target;
   var click = target.parentNode;
   if (click.className !== "listview") return;
+  // Getting id to Edit or Delete the value in list
   var wl = click.id;
+  // Getting action form the list button
   var action = target.dataset.action;
+  //Calling function to Edit nor delete
   action === "check" && checkList(wl);
   action === "edit" && editList(wl);
   action === "delete" && deleteList(wl);
@@ -256,75 +251,45 @@ function editList(wl) {
   input.value = List[wl].value;
   EditList = wl;
 }
+
 // Function to delete a todo
 function deleteList(wl) {
-  selectedTaskId = wl; // Store the selected task id
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
-
+  
   removeValue.addEventListener("click", function (event) {
     event.preventDefault();
-    deleteSelectedTask();
-  });
-  // Remove the event listener after deleting the item
-  this.removeEventListener("click", arguments.callee);
-}
-
-// Function to delete the selected todo
-function deleteSelectedTask() {
-  console.log(selectedTaskId);
-  List = List.filter((_, index) => index != selectedTaskId);
-  listLength -= 1;
-
-  if (listLength === 0) {
-    List = [];
+    List = List.filter((_, index) => index != wl);
+    listLength -= 1;
+    if (listLength === 0) {
+      List = [];
+      localStorage.setItem("List", JSON.stringify(List));
+    } else {
+      localStorage.setItem("List", JSON.stringify(List));
+    }
+    msgText = "Todo has been deleted";
+    popupNotification(1, msgText);
+    document.getElementById("id01").style.display = "none";
     localStorage.setItem("List", JSON.stringify(List));
-  }
-
-  msgText = "Todo has been deleted";
-  popupNotification(1, msgText);
-  document.getElementById("id01").style.display = "none";
-  localStorage.setItem("List", JSON.stringify(List));
-  addingTodo();
+        
+    // Remove the event listener after deleting the item
+    this.removeEventListener("click", arguments.callee);
+    addingTodo();
+    return;
+  });
+  var closeFormPopup = document.getElementById("formClose");
+  closeFormPopup.addEventListener("click", function (event) {
+    event.preventDefault();
+    document.getElementById("id01").style.display = "none";
+    wl = null;
+  });
+  this.removeEventListener("click", arguments.callee);  
 }
-
-// Function to close the confirmation dialog
-// function formClose() {
-//   // console.log(selectedTaskId);
-//   // selectedTaskId = null; // Reset the selected task id
-//   // document.getElementById("id01").style.display = "none";
-//   // console.log(selectedTaskId);
-//   // return;
-//   console.log(selectedTaskId);
-
-//   // Remove the clicked task ID from the list
-//   var index = selectedTaskId.indexOf(selectedTaskId); // Replace clickedTaskId with the actual task ID you want to remove
-//   if (index == -1) {
-//     selectedTaskId.splice(index, 1);
-//   }
-
-//   document.getElementById("id01").style.display = "none";
-//   console.log(selectedTaskId);
-// }
-  var close = document.getElementById("formClose");
-  close.addEventListener("click", (event) => {
-  event.preventDefault();
-  console.log("Delete Called");
-  selectedTaskId = -1;
-  document.getElementById("id01").style.display = "none";
-  
-});
-
-
-
-
-// Remove the event listener after deleting the item
-// this.removeEventListener("click", arguments.callee);
-
+// To open the add popup form in mobile view
 function openForm() {
   document.getElementById("popup").style.display = "block";
 }
-
+// To open the close popup form in mobile view
 function closeForm() {
   document.getElementById("popup").style.display = "none";
 }
