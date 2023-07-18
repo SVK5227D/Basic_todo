@@ -19,9 +19,6 @@ let msgText;
 // Check the width of the window
 var windowWidth = window.innerWidth;
 
-// Variable to keep track of selected task id
-// let selectedTaskId = -1;
-
 //Calling function to getvalue in localstorage
 addingTodo();
 listCompleted();
@@ -290,8 +287,7 @@ function deleteList(wl) {
     document.getElementById("id01").style.display = "none";
     wl = null;
   });
-  this.removeEventListener("click", arguments.callee);
-  
+  this.removeEventListener("click", arguments.callee);  
 }
 // To open the add popup form in mobile view
 function openForm() {
