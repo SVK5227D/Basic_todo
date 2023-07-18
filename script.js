@@ -5,6 +5,7 @@ var input = document.getElementById("input");
 // Getting elements to display lists in HTML
 var forward = document.getElementById("list");
 var forward2 = document.getElementById("completedList");
+
 // Getting data from localStorage
 let List = JSON.parse(localStorage.getItem("List")) || [];
 let listLength = List.length;
@@ -116,6 +117,7 @@ function addingTodo() {
       listLength -= 1;
       completedListLength += 1;
       document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
+
       if (List.length === 0) {
         forward.innerHTML =
           '<center class="valueMessage">Your Todo List is empty</center>';
@@ -239,10 +241,10 @@ function checkList(wl) {
   }));
   addingTodo(wl);
   listCompleted();
-  msgText = "Your todo has been completed";
+  msgText = "Your todo has been marked as completed";
   popupNotification(1, msgText);
 }
-
+  
 // Function to edit a todo
 function editList(wl) {
   document.getElementById("formTitle").innerHTML = "Edit todo";
@@ -273,7 +275,7 @@ function deleteList(wl) {
     localStorage.setItem("List", JSON.stringify(List));
         
     // Remove the event listener after deleting the item
-    this.removeEventListener("click", arguments.callee);
+    removeValue.removeEventListener("click", arguments.callee);
     addingTodo();
     return;
   });
@@ -283,7 +285,7 @@ function deleteList(wl) {
     document.getElementById("id01").style.display = "none";
     wl = null;
   });
-  this.removeEventListener("click", arguments.callee);  
+  closeFormPopup.removeEventListener("click", arguments.callee);  
 }
 // To open the add popup form in mobile view
 function openForm() {

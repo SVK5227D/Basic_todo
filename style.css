@@ -347,6 +347,10 @@ li {
     display: block;
 }
 
+.form{
+    display: block;
+}
+
 #popup {
     display: block;
 }
