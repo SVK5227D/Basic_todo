@@ -54,6 +54,10 @@ li {
     font-size: 20px;
 }
 
+#popup{
+    display: block;
+}
+
 .inputfield {
     height: 35px;
     background-color: transparent;

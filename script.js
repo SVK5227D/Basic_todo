@@ -12,6 +12,8 @@ let listLength = List.length;
 let CompletedList = JSON.parse(localStorage.getItem("CompletedList")) || [];
 let completedListLength = CompletedList.length;
 
+let changesList = 0;
+
 // Variable to store the index of an item being edited
 let EditList = -1;
 let msgText;
@@ -19,6 +21,7 @@ let msgText;
 // Check the width of the window
 var windowWidth = window.innerWidth;
 //Calling function to getvalue in localstorage
+console.log("Calling List to get list form local")
 addingTodo();
 listCompleted();
 form.addEventListener("submit", function (event) {
@@ -100,10 +103,14 @@ function add() {
 
 // Function to display the list of todos
 function addingTodo() {
+  //debugger;
+  console.log("List---------------", List);
+  console.log("List.length---------------", List.length);
+
   if (List.length === 0) {
     forward.innerHTML =
       '<center class="valueMessage" style="margin-top:50px; font-size:20px">Your Todo List is empty</center>';
-    document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
+
     return;
   }
   forward.innerHTML = "";
@@ -116,7 +123,6 @@ function addingTodo() {
       localStorage.setItem("CompletedList", JSON.stringify(CompletedList));
       listLength -= 1;
       completedListLength += 1;
-      document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
 
       if (List.length === 0) {
         forward.innerHTML =
@@ -143,10 +149,12 @@ function addingTodo() {
   if (listLength > 0) {
     document.getElementById("taskValue").innerHTML = "Tasks - " + listLength;
   }
+  document.getElementById("taskValue").innerHTML = "Tasks - " + List.length;
 }
 
 // Function to display the completed list
 function listCompleted() {
+  //debugger;
   CompletedList.sort((a, b) => new Date(b.time) - new Date(a.time));
   if (CompletedList.length === 0) {
     forward2.innerHTML =
@@ -191,6 +199,11 @@ function listCompleted() {
     document.getElementById("completedListLength").innerHTML =
       "Completed - " + completedListLength;
   }
+  console.log(listLength);
+  if(listLength>List.length){
+    console.log("there is some changes");
+  }
+  if(changesList ===1 )
   addingTodo();
 }
 
@@ -239,12 +252,13 @@ function checkList(wl) {
     ...todo,
     checked: index == wl ? !todo.checked : todo.checked,
   }));
+  changesList = 1;
   addingTodo(wl);
   listCompleted();
   msgText = "Your todo has been marked as completed";
   popupNotification(1, msgText);
 }
-  
+
 // Function to edit a todo
 function editList(wl) {
   document.getElementById("formTitle").innerHTML = "Edit todo";
@@ -258,11 +272,11 @@ function editList(wl) {
 function deleteList(wl) {
   document.getElementById("id01").style.display = "block";
   var removeValue = document.getElementById("deleteValue");
-  
   removeValue.addEventListener("click", function (event) {
     event.preventDefault();
+    console.log(wl);
     List = List.filter((_, index) => index != wl);
-    listLength -= 1;
+    // listLength -= 1;
     if (listLength === 0) {
       List = [];
       localStorage.setItem("List", JSON.stringify(List));
@@ -273,7 +287,7 @@ function deleteList(wl) {
     popupNotification(1, msgText);
     document.getElementById("id01").style.display = "none";
     localStorage.setItem("List", JSON.stringify(List));
-        
+
     // Remove the event listener after deleting the item
     removeValue.removeEventListener("click", arguments.callee);
     addingTodo();
@@ -285,7 +299,8 @@ function deleteList(wl) {
     document.getElementById("id01").style.display = "none";
     wl = null;
   });
-  closeFormPopup.removeEventListener("click", arguments.callee);  
+  closeFormPopup.removeEventListener("click", arguments.callee);
+  return;
 }
 // To open the add popup form in mobile view
 function openForm() {
